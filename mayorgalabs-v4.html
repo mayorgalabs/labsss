@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pedro Mayorga — Sistemas Criativos & Soluções Digitais. Automações inteligentes, landing pages de alta conversão, agentes de IA e dev criativo. Petrópolis, BR.">
+<meta property="og:title" content="MAYORGALABS — Sistemas Criativos & Soluções Digitais">
+<meta property="og:description" content="Automações inteligentes, landing pages, agentes de IA e dev criativo. Você foca no negócio. Eu cuido do resto.">
+<meta property="og:type" content="website">
+<title>MAYORGALABS — Sistemas Criativos & Soluções Digitais</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,700;1,300;1,700&family=DM+Mono:wght@300;400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black:     #050505;
+  --off-black: #0a0a0a;
+  --card-bg:   #0d0d0d;
+  --wire:        rgba(255,255,255,0.055);
+  --wire-accent: rgba(36,104,255,0.4);
+  --ink:   #eeebe4;
+  --ink-2: rgba(238,235,228,0.70);
+  --ink-3: rgba(238,235,228,0.35);
+  --ink-4: rgba(238,235,228,0.12);
+  --current:     #2468FF;
+  --current-dim: rgba(36,104,255,0.09);
+  --current-mid: rgba(36,104,255,0.16);
+  --current-glow: rgba(36,104,255,0.22);
+  --mono:    'DM Mono', monospace;
+  --display: 'Barlow Condensed', sans-serif;
+  --body:    'Syne', sans-serif;
+  --radius:  4px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ─── GRAIN OVERLAY ──────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px;
+}
+
+/* ─── SCROLL PROGRESS ────────────────────────────── */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 1.5px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--current), rgba(36,104,255,0.4));
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 8px rgba(36,104,255,0.6);
+}
+
+/* ─── CURSOR ─────────────────────────────────────── */
+#cursor-dot {
+  position: fixed; top:0; left:0;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--current);
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: transform 0.08s, width 0.2s, height 0.2s, background 0.2s;
+  box-shadow: 0 0 10px var(--current);
+}
+#cursor-ring {
+  position: fixed; top:0; left:0;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(36,104,255,0.45);
+  pointer-events: none; z-index: 9997;
+  transform: translate(-50%,-50%);
+  transition: border-color 0.2s;
+}
+body:has(a:hover) #cursor-dot,
+body:has(button:hover) #cursor-dot { width: 10px; height: 10px; background: #fff; }
+body:has(a:hover) #cursor-ring,
+body:has(button:hover) #cursor-ring { border-color: rgba(36,104,255,0.7); width: 48px; height: 48px; }
+
+/* ─── AURORA BG ──────────────────────────────────── */
+.aurora {
+  position: fixed;
+  inset: 0; z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0;
+  animation: auroraFloat 20s ease-in-out infinite;
+}
+.aurora-blob:nth-child(1) {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(36,104,255,0.12) 0%, transparent 70%);
+  top: -15%; left: -10%;
+  animation-delay: 0s; opacity: 1;
+}
+.aurora-blob:nth-child(2) {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(36,104,255,0.07) 0%, transparent 70%);
+  bottom: 20%; right: -10%;
+  animation-delay: -8s; opacity: 1;
+}
+.aurora-blob:nth-child(3) {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(36,104,255,0.05) 0%, transparent 70%);
+  top: 50%; left: 40%;
+  animation-delay: -14s; opacity: 1;
+}
+@keyframes auroraFloat {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%      { transform: translate(40px,-30px) scale(1.08); }
+  66%      { transform: translate(-25px,20px) scale(0.94); }
+}
+
+/* ─── NAV ────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  padding: 1.25rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 0.5px solid var(--wire);
+  background: rgba(5,5,5,0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+.nav-logo {
+  font-family: var(--display); font-weight: 700;
+  font-size: 1.05rem; letter-spacing: 0.2em; text-transform: uppercase;
+  position: relative; cursor: pointer;
+}
+.nav-logo span { color: var(--current); }
+.nav-logo::after {
+  content: attr(data-text);
+  position: absolute; top: 0; left: 0;
+  clip-path: inset(0 100% 0 0);
+  color: var(--current);
+  animation: glitch-clip 6s steps(1) infinite;
+  font-family: var(--display); font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+}
+@keyframes glitch-clip {
+  0%,90%,100% { clip-path: inset(0 100% 0 0); transform: none; }
+  91% { clip-path: inset(20% 0 65% 0); transform: translateX(-2px); }
+  92% { clip-path: inset(60% 0 5% 0); transform: translateX(2px); }
+  93% { clip-path: inset(40% 0 40% 0); transform: none; }
+  94% { clip-path: inset(0 100% 0 0); }
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: var(--mono); font-size: 0.68rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-3); transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+  height: 0.5px; background: var(--current);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.nav-cta {
+  font-family: var(--mono); font-size: 0.65rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.5rem 1.2rem;
+  border: 0.5px solid var(--wire-accent); border-radius: var(--radius);
+  color: var(--current);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.nav-cta:hover { background: var(--current-dim); box-shadow: 0 0 20px rgba(36,104,255,0.12); }
+.nav-status { display: flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.65rem; color: var(--ink-3); letter-spacing: 0.08em; }
+.pulse { width: 6px; height: 6px; border-radius: 50%; background: #3ecf68; animation: pulse 2s ease-in-out infinite; box-shadow: 0 0 6px rgba(62,207,104,0.5); }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+
+/* ─── HERO ───────────────────────────────────────── */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 7rem 3rem 5rem; position: relative; overflow: hidden; z-index: 1;
+}
+.hero-scan {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(36,104,255,0.012) 2px,
+    rgba(36,104,255,0.012) 4px
+  );
+}
+.hero-marks { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.mark { position: absolute; width: 22px; height: 22px; }
+.mark-tl { top: 7rem; left: 3rem; border-top: 1px solid rgba(36,104,255,0.3); border-left: 1px solid rgba(36,104,255,0.3); }
+.mark-tr { top: 7rem; right: 3rem; border-top: 1px solid rgba(36,104,255,0.3); border-right: 1px solid rgba(36,104,255,0.3); }
+.mark-bl { bottom: 5rem; left: 3rem; border-bottom: 1px solid rgba(36,104,255,0.3); border-left: 1px solid rgba(36,104,255,0.3); }
+.mark-br { bottom: 5rem; right: 3rem; border-bottom: 1px solid rgba(36,104,255,0.3); border-right: 1px solid rgba(36,104,255,0.3); }
+
+.hero-ghost {
+  position: absolute; top: 2rem; right: 1rem;
+  font-family: var(--display); font-weight: 700; font-style: italic;
+  font-size: clamp(15rem, 28vw, 28rem); line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px rgba(238,235,228,0.022);
+  pointer-events: none; user-select: none; letter-spacing: -0.04em; z-index: 0;
+}
+
+.hero-title {
+  font-family: var(--display); font-weight: 700; font-style: italic;
+  font-size: clamp(3.5rem, 7.5vw, 8rem); line-height: 1.05; letter-spacing: -0.01em;
+  text-transform: uppercase;
+  opacity: 0; animation: blurUp 0.9s ease forwards 0.35s;
+  position: relative; z-index: 2;
+}
+.hero-title .outline {
+  -webkit-text-stroke: 1.5px rgba(238,235,228,0.25); color: transparent;
+  transition: -webkit-text-stroke-color 0.3s;
+}
+.hero-title .outline:hover { -webkit-text-stroke-color: rgba(238,235,228,0.6); }
+.hero-title .accent { color: var(--current); }
+
+.hero-bottom {
+  margin-top: 4rem; display: flex; justify-content: space-between; align-items: flex-end;
+  opacity: 0; animation: blurUp 0.9s ease forwards 0.6s;
+  position: relative; z-index: 2;
+}
+.hero-left { display: flex; flex-direction: column; gap: 1.75rem; }
+.hero-tagline { max-width: 420px; font-size: 0.95rem; color: var(--ink-2); line-height: 1.8; }
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  padding: 0.95rem 2rem;
+  background: var(--current); border-radius: var(--radius);
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #fff; width: fit-content;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.2s;
+  box-shadow: 0 0 0 rgba(36,104,255,0);
+}
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(36,104,255,0.35), 0 0 0 1px rgba(36,104,255,0.3);
+  background: #3070ff;
+}
+.hero-cta .arrow { font-size: 1rem; transition: transform 0.2s; }
+.hero-cta:hover .arrow { transform: translateX(4px); }
+.hero-tags { display: flex; flex-direction: column; gap: 0.45rem; text-align: right; }
+.tag { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); transition: color 0.5s; }
+.tag.active { color: var(--current); }
+
+/* ─── MARQUEE ────────────────────────────────────── */
+.marquee-wrap {
+  border-top: 0.5px solid var(--wire); border-bottom: 0.5px solid var(--wire);
+  overflow: hidden; padding: 0.95rem 0; background: var(--off-black);
+  position: relative; z-index: 1;
+}
+.marquee-wrap::before,
+.marquee-wrap::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none;
+}
+.marquee-wrap::before { left: 0; background: linear-gradient(90deg, var(--off-black), transparent); }
+.marquee-wrap::after  { right: 0; background: linear-gradient(-90deg, var(--off-black), transparent); }
+.marquee-inner { display: flex; animation: marquee 22s linear infinite; white-space: nowrap; width: max-content; }
+.marquee-item {
+  font-family: var(--display); font-weight: 700; font-style: italic;
+  font-size: 0.85rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-3); padding: 0 2.5rem;
+}
+.marquee-item .sep { color: var(--current); margin-right: 2.5rem; opacity: 0.7; }
+@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* ─── SECTIONS ───────────────────────────────────── */
+section { padding: 7rem 3rem; position: relative; z-index: 1; }
+.section-label {
+  font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--current);
+  margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem;
+}
+.section-label::after { content: ''; height: 0.5px; width: 48px; background: var(--current); opacity: 0.35; }
+
+/* ─── ABOUT ──────────────────────────────────────── */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.about-title {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(2.8rem, 5.5vw, 5.5rem); line-height: 0.92;
+  text-transform: uppercase; letter-spacing: -0.01em;
+}
+.about-title .muted-line { -webkit-text-stroke: 1px rgba(238,235,228,0.15); color: transparent; }
+.about-body { padding-top: 0.5rem; }
+.about-body p { color: var(--ink-2); font-size: 1rem; line-height: 1.85; margin-bottom: 1.5rem; }
+.about-body p strong { color: var(--ink); font-weight: 700; }
+.about-pillars { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 2rem; }
+.pillar {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  border: 0.5px solid var(--wire); border-radius: var(--radius);
+  transition: border-color 0.25s, background 0.25s, transform 0.2s;
+  backdrop-filter: blur(8px);
+}
+.pillar:hover {
+  border-color: var(--wire-accent);
+  background: var(--current-dim);
+  transform: translateX(4px);
+}
+.pillar-num { font-family: var(--mono); font-size: 0.6rem; color: var(--current); letter-spacing: 0.1em; min-width: 24px; }
+.pillar-name { font-family: var(--body); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); flex: 1; }
+.pillar-desc { font-family: var(--mono); font-size: 0.65rem; color: var(--ink-3); text-align: right; }
+
+/* ─── SERVICES ───────────────────────────────────── */
+.services-section { background: var(--off-black); }
+.services-header { margin-bottom: 3.5rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; }
+.services-title {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(2.8rem, 5.5vw, 5.5rem); line-height: 0.92; text-transform: uppercase;
+}
+.services-note { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--ink-3); max-width: 220px; text-align: right; line-height: 1.7; padding-bottom: 0.4rem; }
+.services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--wire); }
+.service-card {
+  background: var(--off-black); padding: 3rem 2.5rem;
+  position: relative; overflow: hidden;
+  transition: background 0.3s, transform 0.3s;
+  cursor: default;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.service-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--current-dim) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.35s;
+}
+.service-card::after {
+  content: ''; position: absolute; inset: 0;
+  border: 0.5px solid transparent;
+  border-radius: 0;
+  transition: border-color 0.35s;
+}
+.service-card:hover::before { opacity: 1; }
+.service-card:hover::after { border-color: rgba(36,104,255,0.2); }
+.service-card:hover .service-num { color: var(--current); }
+.service-num { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; color: var(--ink-4); margin-bottom: 2rem; transition: color 0.3s; }
+.service-name {
+  font-family: var(--display); font-weight: 700;
+  font-size: 2.4rem; text-transform: uppercase; letter-spacing: 0.01em;
+  margin-bottom: 1rem; line-height: 1; position: relative;
+}
+.service-desc { color: var(--ink-2); font-size: 0.9rem; line-height: 1.75; margin-bottom: 2rem; position: relative; }
+.service-items { display: flex; flex-wrap: wrap; gap: 0.5rem; position: relative; }
+.service-item {
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.35rem 0.8rem;
+  border: 0.5px solid var(--wire); border-radius: 2px; color: var(--ink-3);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  backdrop-filter: blur(4px);
+}
+.service-card:hover .service-item { border-color: rgba(36,104,255,0.22); color: var(--ink-2); background: rgba(36,104,255,0.04); }
+.service-tools { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 0.5px solid var(--wire); display: flex; gap: 0.75rem; flex-wrap: wrap; position: relative; }
+.tool-badge { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--current); }
+.tool-badge::after { content: '/'; color: var(--wire); margin-left: 0.75rem; }
+.tool-badge:last-child::after { display: none; }
+
+/* ─── TRABALHOS ──────────────────────────────────── */
+.work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.work-card {
+  border: 0.5px solid var(--wire); border-radius: var(--radius);
+  overflow: hidden; transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+  background: var(--card-bg);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.work-card:hover {
+  border-color: rgba(36,104,255,0.28);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 0.5px rgba(36,104,255,0.15);
+}
+.work-thumb { height: 220px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.work-thumb svg { width: 100%; height: 100%; transition: transform 0.5s ease; }
+.work-card:hover .work-thumb svg { transform: scale(1.04); }
+.work-info { padding: 1.5rem; border-top: 0.5px solid var(--wire); }
+.work-type { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--current); margin-bottom: 0.5rem; }
+.work-title { font-family: var(--display); font-weight: 700; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 0.4rem; }
+.work-desc { font-size: 0.82rem; color: var(--ink-2); line-height: 1.65; }
+.work-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; }
+.work-tag { display: inline-block; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.6rem; border: 0.5px solid rgba(36,104,255,0.28); border-radius: 2px; color: var(--current); }
+.work-arrow { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-4); transition: color 0.2s, transform 0.2s; display: inline-block; }
+.work-card:hover .work-arrow { color: var(--current); transform: translateX(4px); }
+
+/* ─── DIFERENCIAIS ───────────────────────────────── */
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.why-title {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(2.8rem, 5.5vw, 5.5rem); line-height: 0.92; text-transform: uppercase;
+}
+.why-title .italic { font-style: italic; color: var(--current); }
+.diff-featured {
+  padding: 2rem; border-radius: var(--radius); margin-bottom: 1px;
+  background: linear-gradient(135deg, rgba(36,104,255,0.1) 0%, rgba(36,104,255,0.04) 100%);
+  border: 0.5px solid var(--wire-accent);
+  backdrop-filter: blur(10px);
+  position: relative; overflow: hidden;
+}
+.diff-featured::before {
+  content: ''; position: absolute; top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 60% 40%, rgba(36,104,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.diff-featured .diff-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--current); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+.diff-featured h4 { font-family: var(--display); font-weight: 700; font-size: 2rem; text-transform: uppercase; line-height: 1; margin-bottom: 0.6rem; }
+.diff-featured p { font-size: 0.9rem; color: var(--ink-2); line-height: 1.75; }
+.differentials { display: flex; flex-direction: column; }
+.differential { padding: 1.25rem 0; border-bottom: 0.5px solid var(--wire); display: flex; gap: 1.5rem; align-items: flex-start; transition: padding-left 0.25s; }
+.differential:hover { padding-left: 0.5rem; }
+.diff-glyph { font-family: var(--mono); font-size: 0.75rem; color: var(--current); min-width: 20px; margin-top: 0.15rem; opacity: 0.7; }
+.diff-content h4 { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+.diff-content p { font-size: 0.83rem; color: var(--ink-2); line-height: 1.7; }
+
+/* ─── PROCESS ────────────────────────────────────── */
+.process-section { background: var(--off-black); }
+.process-track { position: relative; margin-top: 3rem; }
+.process-line { position: absolute; top: 1.5rem; left: 2rem; right: 2rem; height: 0.5px; background: linear-gradient(90deg, transparent, var(--current-glow) 20%, var(--current-glow) 80%, transparent); }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+.step { padding: 2.5rem 2rem; border-left: 0.5px solid var(--wire); transition: background 0.3s; }
+.step:first-child { border-left: none; }
+.step:hover { background: rgba(36,104,255,0.025); }
+.step-num { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; color: var(--current); margin-bottom: 1.5rem; display: block; }
+.step-title { font-family: var(--display); font-weight: 700; font-size: 1.7rem; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 0.75rem; line-height: 1; }
+.step-desc { font-size: 0.82rem; color: var(--ink-2); line-height: 1.75; }
+
+/* ─── FAQ ────────────────────────────────────────── */
+.faq-section { background: var(--off-black); }
+.faq-wrap { max-width: 720px; }
+.faq-item { border-bottom: 0.5px solid var(--wire); }
+.faq-q {
+  width: 100%; background: none; border: none; padding: 1.5rem 0;
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer; color: var(--ink); font-family: var(--body);
+  font-size: 1rem; font-weight: 700; text-align: left; transition: color 0.2s;
+}
+.faq-q:hover { color: var(--current); }
+.faq-q:hover .faq-icon { color: var(--current); border-color: rgba(36,104,255,0.4); box-shadow: 0 0 12px rgba(36,104,255,0.15); }
+.faq-icon {
+  font-family: var(--mono); font-size: 1.1rem; color: var(--ink-3);
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 0.5px solid var(--wire);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: transform 0.35s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  line-height: 1; padding-bottom: 1px;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); color: var(--current); border-color: rgba(36,104,255,0.4); }
+.faq-item.open .faq-q { color: var(--current); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+.faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.5rem; }
+.faq-a p { color: var(--ink-2); font-size: 0.92rem; line-height: 1.85; }
+
+/* ─── CONTACT ────────────────────────────────────── */
+.contact-section {
+  min-height: 75vh; display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.contact-glow-1 { position: absolute; inset: 0; background: radial-gradient(ellipse 75% 95% at 100% 55%, rgba(36,104,255,0.16) 0%, transparent 65%); }
+.contact-glow-2 { position: absolute; inset: 0; background: radial-gradient(ellipse 45% 65% at 85% 35%, rgba(36,104,255,0.08) 0%, transparent 60%); }
+.contact-ghost {
+  position: absolute; right: -3rem; bottom: -4rem;
+  font-family: var(--display); font-weight: 700; font-style: italic;
+  font-size: clamp(12rem, 22vw, 22rem); line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px rgba(36,104,255,0.055);
+  pointer-events: none; user-select: none; text-transform: uppercase; letter-spacing: -0.04em;
+}
+.contact-inner { position: relative; width: 100%; }
+.contact-title {
+  font-family: var(--display); font-weight: 700; font-style: italic;
+  font-size: clamp(4rem, 10vw, 11rem); line-height: 0.95;
+  text-transform: uppercase; margin-bottom: 3rem;
+  letter-spacing: -0.02em;
+}
+.contact-title .outline { -webkit-text-stroke: 1.5px rgba(238,235,228,0.18); color: transparent; }
+.contact-bottom { display: flex; align-items: flex-start; gap: 1.25rem; flex-wrap: wrap; }
+.contact-link {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.95rem 1.8rem;
+  border: 0.5px solid var(--wire); border-radius: var(--radius);
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink); transition: border-color 0.25s, background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
+}
+.contact-link:hover {
+  border-color: var(--current); background: var(--current-dim); color: var(--current);
+  box-shadow: 0 4px 20px rgba(36,104,255,0.12); transform: translateY(-2px);
+}
+.contact-link .arrow { color: var(--current); font-size: 1rem; transition: transform 0.2s; }
+.contact-link:hover .arrow { transform: translateX(4px); }
+.contact-link.primary { border-color: var(--current); background: var(--current-mid); }
+.contact-link.primary:hover { background: rgba(36,104,255,0.28); box-shadow: 0 4px 24px rgba(36,104,255,0.2); }
+.contact-note { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--ink-3); line-height: 1.9; margin-left: 0.5rem; }
+.contact-phone { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--ink-3); margin-top: 0.3rem; text-align: center; }
+
+/* ─── FOOTER ─────────────────────────────────────── */
+footer {
+  padding: 1.75rem 3rem;
+  border-top: 0.5px solid var(--wire);
+  display: flex; justify-content: space-between; align-items: center;
+  position: relative; z-index: 1;
+}
+.footer-logo { font-family: var(--display); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
+.footer-meta { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--ink-3); text-align: right; line-height: 1.75; }
+
+/* ─── ANIMATIONS ─────────────────────────────────── */
+@keyframes blurUp {
+  from { opacity:0; transform:translateY(24px); filter:blur(8px); }
+  to   { opacity:1; transform:translateY(0);   filter:blur(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  filter: blur(6px);
+  transition: opacity 0.75s ease, transform 0.75s ease, filter 0.75s ease;
+}
+.reveal.visible {
+  opacity: 1; transform: translateY(0); filter: blur(0);
+}
+
+/* ─── HAMBURGER ──────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 36px; height: 36px; cursor: pointer;
+  background: none; border: none; padding: 4px;
+  position: relative; z-index: 601;
+}
+.hamburger span {
+  display: block; height: 1px; background: var(--ink);
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+  transform-origin: center;
+}
+.hamburger span:nth-child(1) { width: 24px; }
+.hamburger span:nth-child(2) { width: 16px; }
+.hamburger span:nth-child(3) { width: 24px; }
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); width: 24px; }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); width: 24px; }
+
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 600;
+  background: rgba(5,5,5,0.97);
+  backdrop-filter: blur(24px);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 2rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.mobile-menu.open { opacity: 1; pointer-events: all; }
+.mobile-menu a {
+  font-family: var(--display); font-weight: 700; font-style: italic;
+  font-size: clamp(2.5rem, 10vw, 4rem);
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--ink-3);
+  transform: translateY(20px); opacity: 0;
+  transition: color 0.2s, transform 0.4s ease, opacity 0.4s ease;
+}
+.mobile-menu.open a { transform: translateY(0); opacity: 1; }
+.mobile-menu.open a:nth-child(1) { transition-delay: 0.05s; }
+.mobile-menu.open a:nth-child(2) { transition-delay: 0.10s; }
+.mobile-menu.open a:nth-child(3) { transition-delay: 0.15s; }
+.mobile-menu.open a:nth-child(4) { transition-delay: 0.20s; }
+.mobile-menu.open a:nth-child(5) { transition-delay: 0.25s; }
+.mobile-menu.open a:nth-child(6) { transition-delay: 0.30s; }
+.mobile-menu a:hover { color: var(--current); }
+.mobile-menu-cta {
+  margin-top: 0.5rem; padding: 0.9rem 2.5rem !important;
+  background: var(--current) !important; border-radius: var(--radius);
+  font-family: var(--mono) !important; font-size: 0.75rem !important;
+  letter-spacing: 0.12em !important; text-transform: uppercase !important;
+  color: #fff !important; font-style: normal !important;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links, .nav-cta, .nav-status { display: none; }
+  .hamburger { display: flex; }
+
+  /* CORRIGE REVEAL — sem blur no mobile, aparece direto */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+
+  section { padding: 3rem 1.25rem; }
+  .hero {
+    min-height: auto;
+    padding: 5rem 1.25rem 3rem;
+  }
+  .hero-ghost { display: none; }
+  .hero-scan { display: none; }
+  .about-grid, .why-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .services-grid, .work-grid { grid-template-columns: 1fr; }
+  .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 2rem; }
+  .services-note { text-align: left; max-width: 100%; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 1.25rem; margin-top: 2rem; }
+  .step:nth-child(odd) { border-left: none; }
+  #cursor-dot, #cursor-ring { display: none; }
+  body { cursor: auto; }
+  .contact-note { margin-left: 0; }
+  .contact-ghost { display: none; }
+  .mark-tr, .mark-bl, .mark-tl, .mark-br { display: none; }
+  .hero-title { font-size: clamp(2.8rem, 13vw, 5rem); }
+  .contact-title { font-size: clamp(3rem, 14vw, 7rem); }
+  .contact-bottom { flex-direction: column; gap: 0.75rem; }
+  .contact-link { width: 100%; justify-content: space-between; }
+  .contact-section { min-height: auto; padding: 3rem 1.25rem; }
+  footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 2rem 1.25rem; }
+  .footer-meta { text-align: center; }
+  .service-card { padding: 1.75rem 1.25rem; }
+  .work-thumb { height: 160px; }
+  .process-line { display: none; }
+  .about-title, .services-title, .why-title { font-size: clamp(2.2rem, 9vw, 3.5rem); }
+  .faq-wrap { max-width: 100%; }
+  .diff-featured { padding: 1.25rem; }
+  .section-label { margin-bottom: 1.5rem; }
+  /* Remove backdrop-filter no mobile (pesado no iOS) */
+  .pillar, .diff-featured, nav { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .marquee-wrap::before, .marquee-wrap::after { display: none; }
+}
+
+@media (max-width: 480px) {
+  nav { padding: 0.9rem 1rem; }
+  section { padding: 2.5rem 1rem; }
+  .hero { padding: 4.5rem 1rem 2.5rem; }
+  .hero-title { font-size: clamp(2.2rem, 14vw, 3.5rem); line-height: 1.0; }
+  .hero-tagline { font-size: 0.88rem; max-width: 100%; }
+  .hero-cta { padding: 0.85rem 1.4rem; font-size: 0.68rem; width: 100%; justify-content: center; }
+  .process-steps { grid-template-columns: 1fr; }
+  .step { border-left: none !important; border-top: 0.5px solid var(--wire); padding: 1.5rem 0; }
+  .step:first-child { border-top: none; }
+  .hero-tags { display: none; }
+  .contact-title { font-size: clamp(2.6rem, 16vw, 4.5rem); }
+  .services-grid { gap: 0; }
+  .work-grid { gap: 0.75rem; }
+  .about-pillars { gap: 0.25rem; }
+  .pillar { padding: 0.7rem 0.9rem; }
+  .pillar-desc { display: none; }
+  .contact-phone { text-align: left; }
+  .nav-logo { font-size: 0.92rem; }
+  .faq-q { font-size: 0.92rem; padding: 1.25rem 0; }
+  .contact-section { padding: 2.5rem 1rem; }
+  .diff-featured h4 { font-size: 1.6rem; }
+  .service-name { font-size: 1.8rem; }
+  .work-thumb { height: 140px; }
+}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div id="progress-bar"></div>
+
+<!-- AURORA -->
+<div class="aurora">
+  <div class="aurora-blob"></div>
+  <div class="aurora-blob"></div>
+  <div class="aurora-blob"></div>
+</div>
+
+<!-- CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" data-text="MAYORGA&nbsp;LABS">MAYORGA<span>LABS</span></div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#trabalhos">Trabalhos</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-status">
+      <div class="pulse"></div>
+      Disponível
+    </div>
+    <a class="nav-cta" href="https://wa.me/5524988531426" target="_blank">Falar agora →</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#sobre"        onclick="closeMenu()">Sobre</a>
+  <a href="#servicos"     onclick="closeMenu()">Serviços</a>
+  <a href="#trabalhos"    onclick="closeMenu()">Trabalhos</a>
+  <a href="#diferenciais" onclick="closeMenu()">Diferenciais</a>
+  <a href="#faq"          onclick="closeMenu()">FAQ</a>
+  <a href="https://wa.me/5524988531426" target="_blank" class="mobile-menu-cta" onclick="closeMenu()">Falar agora →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-scan"></div>
+  <div class="hero-marks">
+    <div class="mark mark-tl"></div>
+    <div class="mark mark-tr"></div>
+    <div class="mark mark-bl"></div>
+    <div class="mark mark-br"></div>
+  </div>
+  <div class="hero-ghost">ML</div>
+
+  <h1 class="hero-title">
+    Sistemas<br>
+    <span class="outline">Criativos</span>&nbsp;<span class="accent">&amp;</span><br>
+    <span class="outline">Soluções</span><br>
+    Digitais
+  </h1>
+  <div class="hero-bottom">
+    <div class="hero-left">
+      <p class="hero-tagline">Você foca no negócio. Eu cuido do resto: automação, design e sistemas que trabalham por você 24h.</p>
+      <a class="hero-cta" href="https://wa.me/5524988531426" target="_blank">
+        Começar um projeto <span class="arrow">→</span>
+      </a>
+    </div>
+    <div class="hero-tags">
+      <span class="tag active">→ Automações Inteligentes</span>
+      <span class="tag">→ Landing Pages</span>
+      <span class="tag">→ Desenvolvimento Criativo</span>
+      <span class="tag">→ Sistemas Digitais</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span class="marquee-item"><span class="sep">◈</span> Automações Inteligentes</span>
+    <span class="marquee-item"><span class="sep">◈</span> Desenvolvimento Criativo</span>
+    <span class="marquee-item"><span class="sep">◈</span> Landing Pages</span>
+    <span class="marquee-item"><span class="sep">◈</span> Sistemas de Conteúdo</span>
+    <span class="marquee-item"><span class="sep">◈</span> Fluxos Digitais</span>
+    <span class="marquee-item"><span class="sep">◈</span> Agentes Inteligentes</span>
+    <span class="marquee-item"><span class="sep">◈</span> Identidade Visual</span>
+    <span class="marquee-item"><span class="sep">◈</span> Automações Inteligentes</span>
+    <span class="marquee-item"><span class="sep">◈</span> Desenvolvimento Criativo</span>
+    <span class="marquee-item"><span class="sep">◈</span> Landing Pages</span>
+    <span class="marquee-item"><span class="sep">◈</span> Sistemas de Conteúdo</span>
+    <span class="marquee-item"><span class="sep">◈</span> Fluxos Digitais</span>
+    <span class="marquee-item"><span class="sep">◈</span> Agentes Inteligentes</span>
+    <span class="marquee-item"><span class="sep">◈</span> Identidade Visual</span>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section-label reveal">01 — Sobre</div>
+  <div class="about-grid reveal">
+    <div>
+      <h2 class="about-title">
+        Mais do que<br>
+        <span class="muted-line">Desenvolvedor.</span><br>
+        Um Construtor.
+      </h2>
+    </div>
+    <div class="about-body">
+      <p>Ajudo <strong>negócios e creators</strong> a modernizar seus processos combinando automações inteligentes, sistemas digitais e direção visual premium em soluções que realmente funcionam.</p>
+      <p>A maioria dos técnicos não sabe comunicar. A maioria dos designers não sabe construir. Eu fico na interseção, criando coisas que são <strong>funcionais, bonitas e modernas</strong>.</p>
+      <div class="about-pillars">
+        <div class="pillar"><span class="pillar-num">01</span><span class="pillar-name">Automações Inteligentes</span><span class="pillar-desc">n8n / Make / OpenAI</span></div>
+        <div class="pillar"><span class="pillar-num">02</span><span class="pillar-name">Sistemas Digitais</span><span class="pillar-desc">Agentes / Fluxos</span></div>
+        <div class="pillar"><span class="pillar-num">03</span><span class="pillar-name">Landing Pages</span><span class="pillar-desc">Framer / Vercel</span></div>
+        <div class="pillar"><span class="pillar-num">04</span><span class="pillar-name">Direção Criativa</span><span class="pillar-desc">Design / Branding</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" class="services-section">
+  <div class="section-label reveal">02 — Serviços</div>
+  <div class="services-header reveal">
+    <h2 class="services-title">O que<br>eu construo.</h2>
+    <p class="services-note">Cada entrega é um sistema pensado pra funcionar, não só parecer bonito.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card tilt-card">
+      <div class="service-num">01 / AUTOMAÇÃO</div>
+      <h3 class="service-name">Automação</h3>
+      <p class="service-desc">Processos manuais que tomam horas do seu time viram fluxos automáticos. Você define a regra, a máquina executa.</p>
+      <div class="service-items">
+        <span class="service-item">Agente de WhatsApp</span>
+        <span class="service-item">Captação de Leads</span>
+        <span class="service-item">CRM automatizado</span>
+        <span class="service-item">Email marketing</span>
+        <span class="service-item">Agendamento</span>
+        <span class="service-item">Notificações inteligentes</span>
+      </div>
+      <div class="service-tools">
+        <span class="tool-badge">n8n</span>
+        <span class="tool-badge">Make</span>
+        <span class="tool-badge">OpenAI</span>
+      </div>
+    </div>
+    <div class="service-card tilt-card">
+      <div class="service-num">02 / LANDING PAGE</div>
+      <h3 class="service-name">Landing Page</h3>
+      <p class="service-desc">Páginas que vendem enquanto você dorme. Design premium, performance técnica e copy estratégico integrados desde o início.</p>
+      <div class="service-items">
+        <span class="service-item">Design moderno</span>
+        <span class="service-item">SEO técnico</span>
+        <span class="service-item">Performance 100/100</span>
+        <span class="service-item">Mobile-first</span>
+        <span class="service-item">A/B testing</span>
+        <span class="service-item">Analytics integrado</span>
+      </div>
+      <div class="service-tools">
+        <span class="tool-badge">Framer</span>
+        <span class="tool-badge">Vercel</span>
+        <span class="tool-badge">HTML/CSS</span>
+      </div>
+    </div>
+    <div class="service-card tilt-card">
+      <div class="service-num">03 / AGENTES DE IA</div>
+      <h3 class="service-name">Agentes de IA</h3>
+      <p class="service-desc">Sistemas inteligentes que tomam decisões, respondem clientes e executam tarefas complexas sem intervenção humana.</p>
+      <div class="service-items">
+        <span class="service-item">SDR automatizado</span>
+        <span class="service-item">Atendimento 24h</span>
+        <span class="service-item">Qualificação de leads</span>
+        <span class="service-item">Análise de dados</span>
+        <span class="service-item">Triagem inteligente</span>
+      </div>
+      <div class="service-tools">
+        <span class="tool-badge">Claude</span>
+        <span class="tool-badge">OpenAI</span>
+        <span class="tool-badge">Fluxos custom</span>
+      </div>
+    </div>
+    <div class="service-card tilt-card">
+      <div class="service-num">04 / DEV CRIATIVO</div>
+      <h3 class="service-name">Dev Criativo</h3>
+      <p class="service-desc">Onde sensibilidade de design encontra execução técnica. Interfaces que parecem premium e performam com intenção.</p>
+      <div class="service-items">
+        <span class="service-item">Interfaces minimalistas</span>
+        <span class="service-item">Sistemas visuais</span>
+        <span class="service-item">Creative tech</span>
+        <span class="service-item">Experiências digitais</span>
+        <span class="service-item">Presença online</span>
+        <span class="service-item">Identidade de marca</span>
+      </div>
+      <div class="service-tools">
+        <span class="tool-badge">Cursor</span>
+        <span class="tool-badge">HTML/CSS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRABALHOS SELECIONADOS -->
+<section id="trabalhos">
+  <div class="section-label reveal">03 — Trabalhos Selecionados</div>
+  <div class="work-grid reveal">
+
+    <!-- Card 1 -->
+    <div class="work-card tilt-card">
+      <div class="work-thumb" style="background:#070d09;">
+        <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="480" height="220" fill="#070d09"/>
+          <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#22c55e" stop-opacity="0.1"/>
+            <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+          </radialGradient>
+          <rect width="480" height="220" fill="url(#glow1)"/>
+
+          <!-- Phone frame — centralizado -->
+          <rect x="148" y="8" width="184" height="204" rx="20" fill="#0b120d" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+          <!-- Screen -->
+          <rect x="158" y="22" width="164" height="178" rx="12" fill="#07100a"/>
+          <!-- Notch -->
+          <rect x="212" y="8" width="56" height="10" rx="5" fill="#0b120d"/>
+          <!-- Status bar dots -->
+          <circle cx="176" cy="36" r="2" fill="rgba(34,197,94,0.2)"/>
+          <text x="295" y="39" font-size="7" text-anchor="end" fill="rgba(34,197,94,0.3)" font-family="monospace">9:41</text>
+          <!-- Divider -->
+          <line x1="158" y1="44" x2="322" y2="44" stroke="rgba(34,197,94,0.08)" stroke-width="0.5"/>
+
+          <!-- Bubble 1 — incoming -->
+          <rect x="166" y="52" width="108" height="24" rx="12" fill="rgba(34,197,94,0.13)" stroke="rgba(34,197,94,0.3)" stroke-width="0.5"/>
+          <text x="176" y="68" font-size="7.5" fill="rgba(34,197,94,0.95)" font-family="monospace">Novo lead recebido</text>
+
+          <!-- Bubble 2 — outgoing -->
+          <rect x="214" y="84" width="100" height="24" rx="12" fill="#22c55e"/>
+          <text x="224" y="100" font-size="7.5" fill="#fff" font-family="monospace">Olá! Posso ajudar?</text>
+
+          <!-- Bubble 3 — incoming -->
+          <rect x="166" y="116" width="96" height="24" rx="12" fill="rgba(34,197,94,0.13)" stroke="rgba(34,197,94,0.3)" stroke-width="0.5"/>
+          <text x="176" y="132" font-size="7.5" fill="rgba(34,197,94,0.95)" font-family="monospace">Quero saber mais</text>
+
+          <!-- Bubble 4 — outgoing -->
+          <rect x="206" y="148" width="108" height="24" rx="12" fill="#22c55e"/>
+          <text x="216" y="164" font-size="7.5" fill="#fff" font-family="monospace">Agendado! ✓ Link →</text>
+
+          <!-- Badge AUTO fora do celular -->
+          <circle cx="372" cy="48" r="26" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.22)" stroke-width="0.5"/>
+          <text x="372" y="44" font-size="13" text-anchor="middle" fill="#22c55e">⚡</text>
+          <text x="372" y="58" font-size="6.5" text-anchor="middle" fill="rgba(34,197,94,0.6)" font-family="monospace">AUTO</text>
+
+          <!-- Linha conectora badge → phone -->
+          <line x1="332" y1="110" x2="346" y2="110" stroke="rgba(34,197,94,0.2)" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <circle cx="354" cy="110" r="10" fill="rgba(34,197,94,0.07)" stroke="rgba(34,197,94,0.22)" stroke-width="0.5"/>
+          <text x="354" y="114" font-size="7" text-anchor="middle" fill="rgba(34,197,94,0.65)" font-family="monospace">n8n</text>
+
+          <!-- Corner marks -->
+          <line x1="20" y1="20" x2="36" y2="20" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
+          <line x1="20" y1="20" x2="20" y2="36" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
+          <line x1="460" y1="200" x2="444" y2="200" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
+          <line x1="460" y1="200" x2="460" y2="184" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="work-info">
+        <div class="work-type">Automação / WhatsApp</div>
+        <div class="work-title">Atendimento Automático</div>
+        <div class="work-desc">Captação e qualificação de leads via WhatsApp com agendamento integrado. 24h sem intervenção manual.</div>
+        <div class="work-meta">
+          <span class="work-arrow">→</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="work-card tilt-card">
+      <div class="work-thumb" style="background:#080810;">
+        <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="480" height="220" fill="#080810"/>
+          <radialGradient id="glow2" cx="55%" cy="40%" r="55%">
+            <stop offset="0%" stop-color="#2468FF" stop-opacity="0.1"/>
+            <stop offset="100%" stop-color="#2468FF" stop-opacity="0"/>
+          </radialGradient>
+          <rect width="480" height="220" fill="url(#glow2)"/>
+          <rect x="55" y="14" width="370" height="192" rx="8" fill="#0c0c1c" stroke="rgba(36,104,255,0.18)" stroke-width="0.5"/>
+          <rect x="55" y="14" width="370" height="30" rx="8" fill="#10101e"/>
+          <circle cx="78" cy="29" r="5" fill="rgba(255,95,86,0.55)"/>
+          <circle cx="94" cy="29" r="5" fill="rgba(255,189,46,0.55)"/>
+          <circle cx="110" cy="29" r="5" fill="rgba(39,201,63,0.55)"/>
+          <rect x="138" y="21" width="190" height="16" rx="8" fill="rgba(36,104,255,0.07)" stroke="rgba(36,104,255,0.16)" stroke-width="0.5"/>
+          <text x="233" y="33" font-size="7" text-anchor="middle" fill="rgba(140,160,255,0.6)" font-family="monospace">mayorgalabs.com</text>
+          <rect x="55" y="44" width="370" height="162" fill="#090913"/>
+          <rect x="76" y="58" width="130" height="12" rx="3" fill="rgba(240,236,230,0.82)"/>
+          <rect x="76" y="75" width="100" height="9" rx="3" fill="rgba(240,236,230,0.35)"/>
+          <rect x="76" y="88" width="118" height="9" rx="3" fill="rgba(240,236,230,0.22)"/>
+          <rect x="76" y="106" width="88" height="24" rx="3" fill="#2468FF"/>
+          <text x="120" y="122" font-size="8.5" text-anchor="middle" fill="#fff" font-family="monospace">Começar →</text>
+          <rect x="265" y="54" width="145" height="142" rx="5" fill="rgba(36,104,255,0.05)" stroke="rgba(36,104,255,0.14)" stroke-width="0.5"/>
+          <circle cx="337" cy="125" r="34" fill="rgba(36,104,255,0.07)" stroke="rgba(36,104,255,0.18)" stroke-width="0.5"/>
+          <text x="337" y="130" font-size="22" text-anchor="middle" fill="rgba(36,104,255,0.45)">◈</text>
+          <rect x="55" y="172" width="370" height="1" fill="rgba(36,104,255,0.08)"/>
+          <text x="110" y="186" font-size="7" text-anchor="middle" fill="rgba(140,160,255,0.45)" font-family="monospace">+240% conversão</text>
+          <text x="240" y="186" font-size="7" text-anchor="middle" fill="rgba(140,160,255,0.45)" font-family="monospace">0.8s load</text>
+          <text x="365" y="186" font-size="7" text-anchor="middle" fill="rgba(140,160,255,0.45)" font-family="monospace">100 Lighthouse</text>
+        </svg>
+      </div>
+      <div class="work-info">
+        <div class="work-type">Landing Page / Conversão</div>
+        <div class="work-title">Página de Alta Conversão</div>
+        <div class="work-desc">Design moderno, carregamento ultra-rápido e estrutura pensada para converter desde o primeiro scroll.</div>
+        <div class="work-meta">
+          <span class="work-arrow">→</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="work-card tilt-card">
+      <div class="work-thumb" style="background:#0a0810;">
+        <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="480" height="220" fill="#0a0810"/>
+          <radialGradient id="glow3" cx="60%" cy="30%" r="55%">
+            <stop offset="0%" stop-color="#a855f7" stop-opacity="0.1"/>
+            <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+          </radialGradient>
+          <rect width="480" height="220" fill="url(#glow3)"/>
+          <rect x="38" y="14" width="404" height="192" rx="7" fill="#0d0b14" stroke="rgba(168,85,247,0.14)" stroke-width="0.5"/>
+          <rect x="38" y="14" width="88" height="192" fill="#0b0912"/>
+          <rect x="126" y="14" width="0.5" height="192" fill="rgba(168,85,247,0.1)"/>
+          <text x="82" y="38" font-size="7.5" text-anchor="middle" fill="rgba(168,85,247,0.55)" font-family="monospace" letter-spacing="1">PAINEL</text>
+          <rect x="50" y="46" width="64" height="16" rx="3" fill="rgba(168,85,247,0.18)"/>
+          <text x="82" y="58" font-size="7" text-anchor="middle" fill="#a855f7" font-family="monospace">Dashboard</text>
+          <text x="82" y="78" font-size="7" text-anchor="middle" fill="rgba(255,255,255,0.28)" font-family="monospace">Conversas</text>
+          <text x="82" y="96" font-size="7" text-anchor="middle" fill="rgba(255,255,255,0.28)" font-family="monospace">Analytics</text>
+          <rect x="140" y="26" width="82" height="54" rx="5" fill="rgba(168,85,247,0.07)" stroke="rgba(168,85,247,0.18)" stroke-width="0.5"/>
+          <text x="181" y="50" font-size="17" text-anchor="middle" fill="#a855f7" font-weight="bold" font-family="sans-serif">847</text>
+          <text x="181" y="66" font-size="6" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="monospace">Conversas/mês</text>
+          <rect x="234" y="26" width="82" height="54" rx="5" fill="rgba(168,85,247,0.07)" stroke="rgba(168,85,247,0.18)" stroke-width="0.5"/>
+          <text x="275" y="50" font-size="17" text-anchor="middle" fill="#a855f7" font-weight="bold" font-family="sans-serif">94%</text>
+          <text x="275" y="66" font-size="6" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="monospace">Resolvidos auto</text>
+          <rect x="328" y="26" width="82" height="54" rx="5" fill="rgba(168,85,247,0.07)" stroke="rgba(168,85,247,0.18)" stroke-width="0.5"/>
+          <text x="369" y="50" font-size="17" text-anchor="middle" fill="#a855f7" font-weight="bold" font-family="sans-serif">2.1s</text>
+          <text x="369" y="66" font-size="6" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="monospace">Tempo resposta</text>
+          <rect x="140" y="90" width="270" height="100" rx="5" fill="rgba(168,85,247,0.04)" stroke="rgba(168,85,247,0.1)" stroke-width="0.5"/>
+          <polyline points="152,174 181,152 210,162 239,136 268,148 297,120 326,132 355,106 384,112 402,96" fill="none" stroke="rgba(168,85,247,0.7)" stroke-width="1.5"/>
+          <polyline points="152,174 181,152 210,162 239,136 268,148 297,120 326,132 355,106 384,112 402,96 402,184 152,184" fill="rgba(168,85,247,0.05)"/>
+          <line x1="152" y1="140" x2="402" y2="140" stroke="rgba(168,85,247,0.06)" stroke-width="0.5"/>
+          <line x1="152" y1="120" x2="402" y2="120" stroke="rgba(168,85,247,0.06)" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="work-info">
+        <div class="work-type">Dashboard / Analytics</div>
+        <div class="work-title">Dashboard de Agentes</div>
+        <div class="work-desc">Painel de controle para monitoramento de automações, volume de conversas e taxa de resolução em tempo real.</div>
+        <div class="work-meta">
+          <span class="work-arrow">→</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="work-card tilt-card">
+      <div class="work-thumb" style="background:#0f0b05;">
+        <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="480" height="220" fill="#0f0b05"/>
+          <radialGradient id="glow4" cx="50%" cy="55%" r="55%">
+            <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.1"/>
+            <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+          </radialGradient>
+          <rect width="480" height="220" fill="url(#glow4)"/>
+          <rect x="28" y="88" width="84" height="44" rx="6" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.35)" stroke-width="0.5"/>
+          <text x="70" y="107" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.6)" font-family="monospace">TRIGGER</text>
+          <text x="70" y="121" font-size="8.5" text-anchor="middle" fill="#f0ece6" font-family="monospace">Novo Lead</text>
+          <line x1="112" y1="110" x2="138" y2="110" stroke="rgba(245,158,11,0.35)" stroke-width="1" stroke-dasharray="4,3"/>
+          <polygon points="138,106 146,110 138,114" fill="rgba(245,158,11,0.5)"/>
+          <rect x="146" y="88" width="84" height="44" rx="6" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.35)" stroke-width="0.5"/>
+          <text x="188" y="107" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.6)" font-family="monospace">PROCESSO</text>
+          <text x="188" y="121" font-size="8.5" text-anchor="middle" fill="#f0ece6" font-family="monospace">IA Analisa</text>
+          <line x1="230" y1="110" x2="250" y2="110" stroke="rgba(245,158,11,0.35)" stroke-width="1" stroke-dasharray="4,3"/>
+          <polygon points="250,106 258,110 250,114" fill="rgba(245,158,11,0.5)"/>
+          <line x1="258" y1="110" x2="258" y2="72" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/>
+          <line x1="258" y1="110" x2="258" y2="148" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/>
+          <rect x="258" y="56" width="84" height="38" rx="6" fill="rgba(245,158,11,0.07)" stroke="rgba(245,158,11,0.22)" stroke-width="0.5"/>
+          <text x="300" y="72" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.5)" font-family="monospace">AÇÃO A</text>
+          <text x="300" y="85" font-size="8.5" text-anchor="middle" fill="rgba(240,236,230,0.65)" font-family="monospace">WhatsApp</text>
+          <rect x="258" y="126" width="84" height="38" rx="6" fill="rgba(245,158,11,0.07)" stroke="rgba(245,158,11,0.22)" stroke-width="0.5"/>
+          <text x="300" y="142" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.5)" font-family="monospace">AÇÃO B</text>
+          <text x="300" y="155" font-size="8.5" text-anchor="middle" fill="rgba(240,236,230,0.65)" font-family="monospace">E-mail</text>
+          <line x1="342" y1="75" x2="365" y2="75" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/>
+          <line x1="365" y1="75" x2="365" y2="110" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/>
+          <line x1="342" y1="145" x2="365" y2="145" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/>
+          <line x1="365" y1="145" x2="365" y2="110" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/>
+          <line x1="365" y1="110" x2="374" y2="110" stroke="rgba(245,158,11,0.35)" stroke-width="1" stroke-dasharray="4,3"/>
+          <polygon points="374,106 382,110 374,114" fill="rgba(245,158,11,0.5)"/>
+          <rect x="382" y="88" width="76" height="44" rx="6" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.5)" stroke-width="0.5"/>
+          <text x="420" y="107" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.8)" font-family="monospace">RESULTADO</text>
+          <text x="420" y="121" font-size="8.5" text-anchor="middle" fill="#f0ece6" font-family="monospace">CRM Update</text>
+          <text x="240" y="198" font-size="7" text-anchor="middle" fill="rgba(245,158,11,0.28)" font-family="monospace">n8n workflow, automação completa de captação</text>
+        </svg>
+      </div>
+      <div class="work-info">
+        <div class="work-type">Workflow / Automação</div>
+        <div class="work-title">Fluxo de Captação</div>
+        <div class="work-desc">Automação completa do funil: trigger, qualificação por IA, ação multicanal e atualização de CRM.</div>
+        <div class="work-meta">
+          <span class="work-arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="section-label reveal">04 — Por que trabalhar comigo</div>
+  <div class="why-grid reveal">
+    <div>
+      <h2 class="why-title">
+        Tech<br>
+        Encontra<br>
+        <span class="italic">Estética.</span>
+      </h2>
+    </div>
+    <div>
+      <div class="diff-featured">
+        <div class="diff-label">◈ Principal diferencial</div>
+        <h4>Direção Criativa</h4>
+        <p>Tenho olhar de designer em tudo que construo. Nada é entregue sem parecer intencional, desde a paleta de cores até o fluxo de automação.</p>
+      </div>
+      <div class="differentials">
+        <div class="differential">
+          <span class="diff-glyph">◇</span>
+          <div class="diff-content">
+            <h4>Estética Moderna</h4>
+            <p>Sua marca não vai parecer um template genérico de agência. Identidade visual distintiva desde o primeiro dia.</p>
+          </div>
+        </div>
+        <div class="differential">
+          <span class="diff-glyph">⬡</span>
+          <div class="diff-content">
+            <h4>Tecnologia Invisível</h4>
+            <p>A tecnologia trabalha por baixo. O que o cliente vê é resultado. Não ferramenta, resultado.</p>
+          </div>
+        </div>
+        <div class="differential">
+          <span class="diff-glyph">▷</span>
+          <div class="diff-content">
+            <h4>Mentalidade de Construtor</h4>
+            <p>Processo objetivo e execução eficiente. Foco em entregar valor real, não em parecer ocupado.</p>
+          </div>
+        </div>
+        <div class="differential">
+          <span class="diff-glyph">◉</span>
+          <div class="diff-content">
+            <h4>Comunicação que Converte</h4>
+            <p>Falo tech e negócio. Sem jargão desnecessário, apenas resultados que fazem sentido pra você.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section class="process-section">
+  <div class="section-label reveal">05 — Processo</div>
+  <div class="process-track reveal">
+    <div class="process-line"></div>
+    <div class="process-steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3 class="step-title">Descoberta</h3>
+        <p class="step-desc">Entendo seu negócio, objetivos e gargalos atuais. Defino o que sucesso realmente significa pra você.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3 class="step-title">Design</h3>
+        <p class="step-desc">Mapeio o sistema ou interface. Decisões estéticas e funcionais antes de qualquer linha de código.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3 class="step-title">Construção</h3>
+        <p class="step-desc">Executo com velocidade. Itero rápido. Entrego uma versão funcional antes de buscar a perfeição.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <h3 class="step-title">Lançamento</h3>
+        <p class="step-desc">Deploy, teste, refinamento. Entrego com documentação completa para você manter o controle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq-section">
+  <div class="section-label">06 — Perguntas Frequentes</div>
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Quanto tempo leva um projeto?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Depende do escopo. Uma landing page simples sai em 3–5 dias. Uma automação completa com integração de CRM pode levar de 1 a 2 semanas. Sempre alinho o prazo antes de começar.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Você trabalha remoto?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Sim, 100% remoto. Atendo clientes em qualquer cidade do Brasil e no exterior. Toda a comunicação acontece via WhatsApp ou videochamada.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Preciso saber de tecnologia para contratar?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Não. Meu trabalho é justamente traduzir o que o seu negócio precisa em sistemas que funcionam. Você foca no resultado, eu cuido da execução.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Quanto custa um projeto?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Depende do escopo e complexidade. Landing pages a partir de R$800. Automações e sistemas digitais a partir de R$1.200. Projetos maiores ou com múltiplos módulos têm orçamento personalizado, sempre com escopo fechado antes de começar, sem surpresas.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Como funciona o pagamento?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>50% na aprovação do escopo, 50% na entrega. Aceito Pix, transferência e cartão. Para projetos maiores, posso parcelar em até 3x.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Você oferece suporte depois da entrega?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Todo projeto inclui 15 dias de suporte gratuito após a entrega. Para suporte contínuo, temos planos mensais disponíveis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="contact-section">
+  <div class="contact-glow-1"></div>
+  <div class="contact-glow-2"></div>
+  <div class="contact-ghost">LAB</div>
+  <div class="contact-inner">
+    <div class="section-label reveal">07 — Contato</div>
+    <h2 class="contact-title reveal">
+      Bora<br>
+      <span class="outline">Construir</span><br>
+      Algo.
+    </h2>
+    <div class="contact-bottom reveal">
+      <div style="display:flex;flex-direction:column;gap:0.35rem;">
+        <a class="contact-link primary" href="https://wa.me/5524988531426" target="_blank">
+          WhatsApp <span class="arrow">→</span>
+        </a>
+        <span class="contact-phone">+55 24 98853-1426</span>
+      </div>
+      <a class="contact-link" href="https://instagram.com/mayorgalabs" target="_blank">
+        Instagram <span class="arrow">→</span>
+      </a>
+      <a class="contact-link" href="mailto:pedromayorgaamaral@gmail.com">
+        E-mail <span class="arrow">→</span>
+      </a>
+      <div class="contact-note">
+        DM para projetos, colaborações<br>
+        e sistemas customizados.<br>
+        <span style="color:var(--current)">@mayorgalabs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MAYORGALABS</div>
+  <div class="footer-meta">
+    Sistemas Criativos & Soluções Digitais<br>
+    Construindo experiências digitais modernas. BR/Global
+  </div>
+</footer>
+
+<script>
+/* ── Hamburger menu ──────────────────────────── */
+const hamburger   = document.getElementById('hamburger');
+const mobileMenu  = document.getElementById('mobile-menu');
+
+function closeMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+
+/* ── Scroll progress ─────────────────────────── */
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  bar.style.width = pct + '%';
+}, { passive: true });
+
+/* ── Magnetic cursor ─────────────────────────── */
+const dot  = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx + 'px';
+  dot.style.top  = my + 'px';
+});
+(function animRing() {
+  rx += (mx - rx) * 0.22;
+  ry += (my - ry) * 0.22;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(animRing);
+})();
+
+/* Magnetic pull on interactive elements */
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mousemove', e => {
+    const r   = el.getBoundingClientRect();
+    const cx  = r.left + r.width  / 2;
+    const cy  = r.top  + r.height / 2;
+    const dx  = (e.clientX - cx) * 0.22;
+    const dy  = (e.clientY - cy) * 0.22;
+    el.style.transform = `translate(${dx}px, ${dy}px)`;
+  });
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = '';
+  });
+});
+
+/* ── Mobile: força reveal visível ────────────── */
+if (window.innerWidth <= 900) {
+  document.querySelectorAll('.reveal').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    el.style.filter = 'none';
+  });
+}
+
+/* ── Blur-in reveal (desktop only) ──────────── */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 90);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => observer.observe(el));
+
+/* ── Hero tag cycle ──────────────────────────── */
+const tags = document.querySelectorAll('.hero-tags .tag');
+let activeTag = 0;
+setInterval(() => {
+  tags.forEach(t => t.classList.remove('active'));
+  activeTag = (activeTag + 1) % tags.length;
+  tags[activeTag].classList.add('active');
+}, 1900);
+
+/* ── 3D Tilt on cards ────────────────────────── */
+document.querySelectorAll('.tilt-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r  = card.getBoundingClientRect();
+    const x  = (e.clientX - r.left) / r.width  - 0.5;
+    const y  = (e.clientY - r.top)  / r.height - 0.5;
+    card.style.transform = `perspective(800px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+/* ── FAQ ─────────────────────────────────────── */
+function toggleFaq(btn) {
+  const item   = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
