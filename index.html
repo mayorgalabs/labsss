@@ -8,9 +8,6 @@
 <meta property="og:description" content="Automações inteligentes, landing pages, agentes de IA e dev criativo. Você foca no negócio. Eu cuido do resto.">
 <meta property="og:type" content="website">
 <title>MAYORGALABS — Sistemas Criativos & Soluções Digitais</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%23050505'/><text y='.9em' font-size='72' font-family='Arial Black,sans-serif' font-weight='900' fill='%232468FF' x='8'>M</text></svg>">
-<meta property="og:url" content="https://mayorgalabs.com.br">
-<meta property="og:image" content="https://labsss-zeta.vercel.app/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,700;1,300;1,700&family=DM+Mono:wght@300;400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -700,66 +697,94 @@ footer {
 <div id="cursor-ring"></div>
 
 <!-- NAV -->
+<style>
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-right: 0.75rem;
+}
+.lang-btn {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: none;
+  border: 0.5px solid transparent;
+  color: var(--ink-3);
+  padding: 0.25rem 0.4rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.lang-btn.active,
+.lang-btn:hover {
+  color: var(--current);
+  border-color: rgba(36,104,255,0.35);
+}
+</style>
+
 <nav>
   <div class="nav-logo" data-text="MAYORGA&nbsp;LABS">MAYORGA<span>LABS</span></div>
   <ul class="nav-links">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#trabalhos">Trabalhos</a></li>
-    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#sobre" data-i18n="nav_about">Sobre</a></li>
+    <li><a href="#servicos" data-i18n="nav_services">Serviços</a></li>
+    <li><a href="#trabalhos" data-i18n="nav_work">Trabalhos</a></li>
+    <li><a href="#diferenciais" data-i18n="nav_why">Diferenciais</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
     <div class="nav-status">
       <div class="pulse"></div>
-      Disponível
+      <span data-i18n="nav_status">Disponível</span>
     </div>
-    <a class="nav-cta" href="https://wa.me/5524988531426" target="_blank">Falar agora →</a>
+    <a class="nav-cta" href="https://wa.me/5524988531426" target="_blank" data-i18n="nav_cta">Falar agora →</a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#sobre"        onclick="closeMenu()">Sobre</a>
-  <a href="#servicos"     onclick="closeMenu()">Serviços</a>
-  <a href="#trabalhos"    onclick="closeMenu()">Trabalhos</a>
-  <a href="#diferenciais" onclick="closeMenu()">Diferenciais</a>
-  <a href="#faq"          onclick="closeMenu()">FAQ</a>
-  <a href="https://wa.me/5524988531426" target="_blank" class="mobile-menu-cta" onclick="closeMenu()">Falar agora →</a>
+  <a href="#sobre"        onclick="closeMenu()" data-i18n="nav_about">Sobre</a>
+  <a href="#servicos"     onclick="closeMenu()" data-i18n="nav_services">Serviços</a>
+  <a href="#trabalhos"    onclick="closeMenu()" data-i18n="nav_work">Trabalhos</a>
+  <a href="#diferenciais" onclick="closeMenu()" data-i18n="nav_why">Diferenciais</a>
+  <a href="#faq">FAQ</a>
+  <a href="https://wa.me/5524988531426" target="_blank" class="mobile-menu-cta" onclick="closeMenu()" data-i18n="nav_cta">Falar agora →</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-scan"></div>
   <div class="hero-marks">
-    <div class="mark mark-tl"></div>
-    <div class="mark mark-tr"></div>
-    <div class="mark mark-bl"></div>
-    <div class="mark mark-br"></div>
+    <div class="mark mark-tl"></div><div class="mark mark-tr"></div>
+    <div class="mark mark-bl"></div><div class="mark mark-br"></div>
   </div>
   <div class="hero-ghost">ML</div>
-
   <h1 class="hero-title">
-    Sistemas<br>
-    <span class="outline">Criativos</span>&nbsp;<span class="accent">&amp;</span><br>
-    <span class="outline">Soluções</span><br>
-    Digitais
+    <span data-i18n="hero_line1">Sistemas</span><br>
+    <span class="outline" data-i18n="hero_line2">Criativos</span>&nbsp;<span class="accent">&amp;</span><br>
+    <span class="outline" data-i18n="hero_line3">Soluções</span><br>
+    <span data-i18n="hero_line4">Digitais</span>
   </h1>
   <div class="hero-bottom">
     <div class="hero-left">
-      <p class="hero-tagline">Você foca no negócio. Eu cuido do resto: automação, design e sistemas que trabalham por você 24h.</p>
+      <p class="hero-tagline" data-i18n="hero_tagline">Você foca no negócio. Eu cuido do resto: automação, design e sistemas que trabalham por você 24h.</p>
       <a class="hero-cta" href="https://wa.me/5524988531426" target="_blank">
-        Começar um projeto <span class="arrow">→</span>
+        <span data-i18n="hero_cta">Começar um projeto</span> <span class="arrow">→</span>
       </a>
     </div>
     <div class="hero-tags">
-      <span class="tag active">→ Automações Inteligentes</span>
-      <span class="tag">→ Landing Pages</span>
-      <span class="tag">→ Desenvolvimento Criativo</span>
-      <span class="tag">→ Sistemas Digitais</span>
+      <span class="tag active" data-i18n="tag1">→ Automações Inteligentes</span>
+      <span class="tag" data-i18n="tag2">→ Landing Pages</span>
+      <span class="tag" data-i18n="tag3">→ Desenvolvimento Criativo</span>
+      <span class="tag" data-i18n="tag4">→ Sistemas Digitais</span>
     </div>
   </div>
 </section>
@@ -767,42 +792,42 @@ footer {
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-inner">
-    <span class="marquee-item"><span class="sep">◈</span> Automações Inteligentes</span>
-    <span class="marquee-item"><span class="sep">◈</span> Desenvolvimento Criativo</span>
-    <span class="marquee-item"><span class="sep">◈</span> Landing Pages</span>
-    <span class="marquee-item"><span class="sep">◈</span> Sistemas de Conteúdo</span>
-    <span class="marquee-item"><span class="sep">◈</span> Fluxos Digitais</span>
-    <span class="marquee-item"><span class="sep">◈</span> Agentes Inteligentes</span>
-    <span class="marquee-item"><span class="sep">◈</span> Identidade Visual</span>
-    <span class="marquee-item"><span class="sep">◈</span> Automações Inteligentes</span>
-    <span class="marquee-item"><span class="sep">◈</span> Desenvolvimento Criativo</span>
-    <span class="marquee-item"><span class="sep">◈</span> Landing Pages</span>
-    <span class="marquee-item"><span class="sep">◈</span> Sistemas de Conteúdo</span>
-    <span class="marquee-item"><span class="sep">◈</span> Fluxos Digitais</span>
-    <span class="marquee-item"><span class="sep">◈</span> Agentes Inteligentes</span>
-    <span class="marquee-item"><span class="sep">◈</span> Identidade Visual</span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="tag1">Automações Inteligentes</span></span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="tag3">Desenvolvimento Criativo</span></span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="tag2">Landing Pages</span></span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="marq1">Sistemas de Conteúdo</span></span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="marq2">Fluxos Digitais</span></span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="marq3">Agentes Inteligentes</span></span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="marq4">Identidade Visual</span></span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="tag1">Automações Inteligentes</span></span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="tag3">Desenvolvimento Criativo</span></span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="tag2">Landing Pages</span></span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="marq1">Sistemas de Conteúdo</span></span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="marq2">Fluxos Digitais</span></span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="marq3">Agentes Inteligentes</span></span>
+    <span class="marquee-item"><span class="sep">◈</span> <span data-i18n="marq4">Identidade Visual</span></span>
   </div>
 </div>
 
 <!-- SOBRE -->
 <section id="sobre">
-  <div class="section-label reveal">01 — Sobre</div>
+  <div class="section-label reveal">01 — <span data-i18n="nav_about">Sobre</span></div>
   <div class="about-grid reveal">
     <div>
       <h2 class="about-title">
-        Mais do que<br>
-        <span class="muted-line">Desenvolvedor.</span><br>
-        Um Construtor.
+        <span data-i18n="about_title1">Mais do que</span><br>
+        <span class="muted-line" data-i18n="about_title2">Desenvolvedor.</span><br>
+        <span data-i18n="about_title3">Um Construtor.</span>
       </h2>
     </div>
     <div class="about-body">
-      <p>Ajudo <strong>negócios e creators</strong> a modernizar processos com automações inteligentes, sistemas digitais e direção visual premium.</p>
-      <p>A maioria dos técnicos não sabe comunicar. A maioria dos designers não sabe construir. Eu fico na interseção.</p>
+      <p data-i18n="about_p1">Ajudo <strong>negócios e creators</strong> a modernizar processos com automações inteligentes, sistemas digitais e direção visual premium.</p>
+      <p data-i18n="about_p2">A maioria dos técnicos não sabe comunicar. A maioria dos designers não sabe construir. Eu fico na interseção.</p>
       <div class="about-pillars">
-        <div class="pillar"><span class="pillar-num">01</span><span class="pillar-name">Automações Inteligentes</span><span class="pillar-desc">n8n / Make / OpenAI</span></div>
-        <div class="pillar"><span class="pillar-num">02</span><span class="pillar-name">Sistemas Digitais</span><span class="pillar-desc">Agentes / Fluxos</span></div>
-        <div class="pillar"><span class="pillar-num">03</span><span class="pillar-name">Landing Pages</span><span class="pillar-desc">Framer / Vercel</span></div>
-        <div class="pillar"><span class="pillar-num">04</span><span class="pillar-name">Direção Criativa</span><span class="pillar-desc">Design / Branding</span></div>
+        <div class="pillar"><span class="pillar-num">01</span><span class="pillar-name" data-i18n="tag1">Automações Inteligentes</span><span class="pillar-desc">n8n / OpenAI</span></div>
+        <div class="pillar"><span class="pillar-num">02</span><span class="pillar-name" data-i18n="pill2">Sistemas Digitais</span><span class="pillar-desc">Agentes / Fluxos</span></div>
+        <div class="pillar"><span class="pillar-num">03</span><span class="pillar-name" data-i18n="tag2">Landing Pages</span><span class="pillar-desc">Framer / Vercel</span></div>
+        <div class="pillar"><span class="pillar-num">04</span><span class="pillar-name" data-i18n="pill4">Direção Criativa</span><span class="pillar-desc">Design / Branding</span></div>
       </div>
     </div>
   </div>
@@ -810,288 +835,116 @@ footer {
 
 <!-- SERVIÇOS -->
 <section id="servicos" class="services-section">
-  <div class="section-label reveal">02 — Serviços</div>
+  <div class="section-label reveal">02 — <span data-i18n="nav_services">Serviços</span></div>
   <div class="services-header reveal">
-    <h2 class="services-title">O que<br>eu construo.</h2>
-    <p class="services-note">Sistemas pensados pra funcionar, não só parecer bonito.</p>
+    <h2 class="services-title" data-i18n="services_title">O que<br>eu construo.</h2>
+    <p class="services-note" data-i18n="services_note">Sistemas pensados pra funcionar, não só parecer bonito.</p>
   </div>
   <div class="services-grid">
     <div class="service-card tilt-card">
-      <div class="service-num">01 / AUTOMAÇÃO</div>
-      <h3 class="service-name">Automação</h3>
-      <p class="service-desc">Processos manuais viram fluxos automáticos. Você define a regra, a máquina executa.</p>
+      <div class="service-num">01 / <span data-i18n="s1_num">AUTOMAÇÃO</span></div>
+      <h3 class="service-name" data-i18n="s1_name">Automação</h3>
+      <p class="service-desc" data-i18n="s1_desc">Processos manuais viram fluxos automáticos. Você define a regra, a máquina executa.</p>
       <div class="service-items">
-        <span class="service-item">Agente de WhatsApp</span>
-        <span class="service-item">Captação de Leads</span>
-        <span class="service-item">CRM automatizado</span>
-        <span class="service-item">Email marketing</span>
-        <span class="service-item">Agendamento</span>
-        <span class="service-item">Notificações inteligentes</span>
+        <span class="service-item" data-i18n="s1_i1">Agente de WhatsApp</span>
+        <span class="service-item" data-i18n="s1_i2">Captação de Leads</span>
+        <span class="service-item" data-i18n="s1_i3">CRM automatizado</span>
+        <span class="service-item" data-i18n="s1_i4">Email marketing</span>
+        <span class="service-item" data-i18n="s1_i5">Agendamento</span>
+        <span class="service-item" data-i18n="s1_i6">Notificações</span>
       </div>
-      <div class="service-tools">
-        <span class="tool-badge">n8n</span>
-        <span class="tool-badge">OpenAI</span>
-      </div>
+      <div class="service-tools"><span class="tool-badge">n8n</span><span class="tool-badge">OpenAI</span></div>
     </div>
     <div class="service-card tilt-card">
-      <div class="service-num">02 / LANDING PAGE</div>
-      <h3 class="service-name">Landing Page</h3>
-      <p class="service-desc">Páginas que vendem enquanto você dorme. Design premium, performance técnica e copy estratégico.</p>
+      <div class="service-num">02 / <span data-i18n="s2_num">LANDING PAGE</span></div>
+      <h3 class="service-name" data-i18n="s2_name">Landing Page</h3>
+      <p class="service-desc" data-i18n="s2_desc">Páginas que vendem enquanto você dorme. Design premium, performance técnica e copy estratégico.</p>
       <div class="service-items">
-        <span class="service-item">Design moderno</span>
-        <span class="service-item">SEO técnico</span>
-        <span class="service-item">Performance 100/100</span>
-        <span class="service-item">Mobile-first</span>
-        <span class="service-item">A/B testing</span>
-        <span class="service-item">Analytics integrado</span>
+        <span class="service-item" data-i18n="s2_i1">Design moderno</span>
+        <span class="service-item" data-i18n="s2_i2">SEO técnico</span>
+        <span class="service-item" data-i18n="s2_i3">Performance 100/100</span>
+        <span class="service-item" data-i18n="s2_i4">Mobile-first</span>
+        <span class="service-item" data-i18n="s2_i5">A/B testing</span>
+        <span class="service-item" data-i18n="s2_i6">Analytics</span>
       </div>
-      <div class="service-tools">
-        <span class="tool-badge">Framer</span>
-        <span class="tool-badge">Vercel</span>
-        <span class="tool-badge">HTML/CSS</span>
-      </div>
+      <div class="service-tools"><span class="tool-badge">Framer</span><span class="tool-badge">Vercel</span><span class="tool-badge">HTML/CSS</span></div>
     </div>
     <div class="service-card tilt-card">
-      <div class="service-num">03 / AGENTES DE IA</div>
-      <h3 class="service-name">Agentes de IA</h3>
-      <p class="service-desc">Sistemas que tomam decisões, respondem clientes e executam tarefas sem intervenção humana.</p>
+      <div class="service-num">03 / <span data-i18n="s3_num">AGENTES DE IA</span></div>
+      <h3 class="service-name" data-i18n="s3_name">Agentes de IA</h3>
+      <p class="service-desc" data-i18n="s3_desc">Sistemas que tomam decisões, respondem clientes e executam tarefas sem intervenção humana.</p>
       <div class="service-items">
-        <span class="service-item">SDR automatizado</span>
-        <span class="service-item">Atendimento 24h</span>
-        <span class="service-item">Qualificação de leads</span>
-        <span class="service-item">Análise de dados</span>
-        <span class="service-item">Triagem inteligente</span>
+        <span class="service-item" data-i18n="s3_i1">SDR automatizado</span>
+        <span class="service-item" data-i18n="s3_i2">Atendimento 24h</span>
+        <span class="service-item" data-i18n="s3_i3">Qualificação de leads</span>
+        <span class="service-item" data-i18n="s3_i4">Análise de dados</span>
+        <span class="service-item" data-i18n="s3_i5">Triagem inteligente</span>
       </div>
-      <div class="service-tools">
-        <span class="tool-badge">Claude</span>
-        <span class="tool-badge">OpenAI</span>
-        <span class="tool-badge">Fluxos custom</span>
-      </div>
+      <div class="service-tools"><span class="tool-badge">Claude</span><span class="tool-badge">OpenAI</span></div>
     </div>
     <div class="service-card tilt-card">
-      <div class="service-num">04 / DEV CRIATIVO</div>
-      <h3 class="service-name">Dev Criativo</h3>
-      <p class="service-desc">Sensibilidade de design encontra execução técnica. Interfaces premium com intenção.</p>
+      <div class="service-num">04 / <span data-i18n="s4_num">DEV CRIATIVO</span></div>
+      <h3 class="service-name" data-i18n="s4_name">Dev Criativo</h3>
+      <p class="service-desc" data-i18n="s4_desc">Sensibilidade de design encontra execução técnica. Interfaces premium com intenção.</p>
       <div class="service-items">
-        <span class="service-item">Interfaces minimalistas</span>
-        <span class="service-item">Sistemas visuais</span>
-        <span class="service-item">Creative tech</span>
-        <span class="service-item">Experiências digitais</span>
-        <span class="service-item">Presença online</span>
-        <span class="service-item">Identidade de marca</span>
+        <span class="service-item" data-i18n="s4_i1">Interfaces minimalistas</span>
+        <span class="service-item" data-i18n="s4_i2">Sistemas visuais</span>
+        <span class="service-item" data-i18n="s4_i3">Creative tech</span>
+        <span class="service-item" data-i18n="s4_i4">Experiências digitais</span>
+        <span class="service-item" data-i18n="s4_i5">Presença online</span>
+        <span class="service-item" data-i18n="s4_i6">Identidade de marca</span>
       </div>
-      <div class="service-tools">
-        <span class="tool-badge">Cursor</span>
-        <span class="tool-badge">HTML/CSS</span>
-      </div>
+      <div class="service-tools"><span class="tool-badge">Cursor</span><span class="tool-badge">HTML/CSS</span></div>
     </div>
   </div>
 </section>
 
-<!-- TRABALHOS SELECIONADOS -->
+<!-- TRABALHOS -->
 <section id="trabalhos">
-  <div class="section-label reveal">03 — Trabalhos Selecionados</div>
+  <div class="section-label reveal">03 — <span data-i18n="nav_work">Trabalhos Selecionados</span></div>
   <div class="work-grid reveal">
-
-    <!-- Card 1 -->
     <div class="work-card tilt-card">
       <div class="work-thumb" style="background:#070d09;">
-        <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
-          <rect width="480" height="220" fill="#070d09"/>
-          <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#22c55e" stop-opacity="0.1"/>
-            <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
-          </radialGradient>
-          <rect width="480" height="220" fill="url(#glow1)"/>
-
-          <!-- Phone frame — centralizado -->
-          <rect x="148" y="8" width="184" height="204" rx="20" fill="#0b120d" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
-          <!-- Screen -->
-          <rect x="158" y="22" width="164" height="178" rx="12" fill="#07100a"/>
-          <!-- Notch -->
-          <rect x="212" y="8" width="56" height="10" rx="5" fill="#0b120d"/>
-          <!-- Status bar dots -->
-          <circle cx="176" cy="36" r="2" fill="rgba(34,197,94,0.2)"/>
-          <text x="295" y="39" font-size="7" text-anchor="end" fill="rgba(34,197,94,0.3)" font-family="monospace">9:41</text>
-          <!-- Divider -->
-          <line x1="158" y1="44" x2="322" y2="44" stroke="rgba(34,197,94,0.08)" stroke-width="0.5"/>
-
-          <!-- Bubble 1 — incoming -->
-          <rect x="166" y="52" width="108" height="24" rx="12" fill="rgba(34,197,94,0.13)" stroke="rgba(34,197,94,0.3)" stroke-width="0.5"/>
-          <text x="176" y="68" font-size="7.5" fill="rgba(34,197,94,0.95)" font-family="monospace">Novo lead recebido</text>
-
-          <!-- Bubble 2 — outgoing -->
-          <rect x="214" y="84" width="100" height="24" rx="12" fill="#22c55e"/>
-          <text x="224" y="100" font-size="7.5" fill="#fff" font-family="monospace">Olá! Posso ajudar?</text>
-
-          <!-- Bubble 3 — incoming -->
-          <rect x="166" y="116" width="96" height="24" rx="12" fill="rgba(34,197,94,0.13)" stroke="rgba(34,197,94,0.3)" stroke-width="0.5"/>
-          <text x="176" y="132" font-size="7.5" fill="rgba(34,197,94,0.95)" font-family="monospace">Quero saber mais</text>
-
-          <!-- Bubble 4 — outgoing -->
-          <rect x="206" y="148" width="108" height="24" rx="12" fill="#22c55e"/>
-          <text x="216" y="164" font-size="7.5" fill="#fff" font-family="monospace">Agendado! ✓ Link →</text>
-
-          <!-- Badge AUTO fora do celular -->
-          <circle cx="372" cy="48" r="26" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.22)" stroke-width="0.5"/>
-          <text x="372" y="44" font-size="13" text-anchor="middle" fill="#22c55e">⚡</text>
-          <text x="372" y="58" font-size="6.5" text-anchor="middle" fill="rgba(34,197,94,0.6)" font-family="monospace">AUTO</text>
-
-          <!-- Linha conectora badge → phone -->
-          <line x1="332" y1="110" x2="346" y2="110" stroke="rgba(34,197,94,0.2)" stroke-width="0.5" stroke-dasharray="3,3"/>
-          <circle cx="354" cy="110" r="10" fill="rgba(34,197,94,0.07)" stroke="rgba(34,197,94,0.22)" stroke-width="0.5"/>
-          <text x="354" y="114" font-size="7" text-anchor="middle" fill="rgba(34,197,94,0.65)" font-family="monospace">n8n</text>
-
-          <!-- Corner marks -->
-          <line x1="20" y1="20" x2="36" y2="20" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
-          <line x1="20" y1="20" x2="20" y2="36" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
-          <line x1="460" y1="200" x2="444" y2="200" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
-          <line x1="460" y1="200" x2="460" y2="184" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
-        </svg>
+        <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg"><rect width="480" height="220" fill="#070d09"/><radialGradient id="glow1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#22c55e" stop-opacity="0.1"/><stop offset="100%" stop-color="#22c55e" stop-opacity="0"/></radialGradient><rect width="480" height="220" fill="url(#glow1)"/><rect x="148" y="8" width="184" height="204" rx="20" fill="#0b120d" stroke="rgba(34,197,94,0.3)" stroke-width="1"/><rect x="158" y="22" width="164" height="178" rx="12" fill="#07100a"/><rect x="212" y="8" width="56" height="10" rx="5" fill="#0b120d"/><circle cx="176" cy="36" r="2" fill="rgba(34,197,94,0.2)"/><text x="295" y="39" font-size="7" text-anchor="end" fill="rgba(34,197,94,0.3)" font-family="monospace">9:41</text><line x1="158" y1="44" x2="322" y2="44" stroke="rgba(34,197,94,0.08)" stroke-width="0.5"/><rect x="166" y="52" width="108" height="24" rx="12" fill="rgba(34,197,94,0.13)" stroke="rgba(34,197,94,0.3)" stroke-width="0.5"/><text x="176" y="68" font-size="7.5" fill="rgba(34,197,94,0.95)" font-family="monospace">Novo lead recebido</text><rect x="214" y="84" width="100" height="24" rx="12" fill="#22c55e"/><text x="224" y="100" font-size="7.5" fill="#fff" font-family="monospace">Olá! Posso ajudar?</text><rect x="166" y="116" width="96" height="24" rx="12" fill="rgba(34,197,94,0.13)" stroke="rgba(34,197,94,0.3)" stroke-width="0.5"/><text x="176" y="132" font-size="7.5" fill="rgba(34,197,94,0.95)" font-family="monospace">Quero saber mais</text><rect x="206" y="148" width="108" height="24" rx="12" fill="#22c55e"/><text x="216" y="164" font-size="7.5" fill="#fff" font-family="monospace">Agendado! ✓ Link →</text><circle cx="372" cy="48" r="26" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.22)" stroke-width="0.5"/><text x="372" y="44" font-size="13" text-anchor="middle" fill="#22c55e">⚡</text><text x="372" y="58" font-size="6.5" text-anchor="middle" fill="rgba(34,197,94,0.6)" font-family="monospace">AUTO</text><line x1="332" y1="110" x2="346" y2="110" stroke="rgba(34,197,94,0.2)" stroke-width="0.5" stroke-dasharray="3,3"/><circle cx="354" cy="110" r="10" fill="rgba(34,197,94,0.07)" stroke="rgba(34,197,94,0.22)" stroke-width="0.5"/><text x="354" y="114" font-size="7" text-anchor="middle" fill="rgba(34,197,94,0.65)" font-family="monospace">n8n</text></svg>
       </div>
       <div class="work-info">
-        <div class="work-type">Automação / WhatsApp</div>
-        <div class="work-title">Atendimento Automático</div>
-        <div class="work-desc">Captação e qualificação de leads via WhatsApp com agendamento integrado. 24h sem intervenção manual.</div>
-        <div class="work-meta">
-          <span class="work-arrow">→</span>
-        </div>
+        <div class="work-type" data-i18n="w1_type">Automação / WhatsApp</div>
+        <div class="work-title" data-i18n="w1_title">Atendimento Automático</div>
+        <div class="work-desc" data-i18n="w1_desc">Captação e qualificação de leads via WhatsApp com agendamento integrado. 24h sem intervenção manual.</div>
+        <div class="work-meta"><span class="work-arrow">→</span></div>
       </div>
     </div>
-
-    <!-- Card 2 -->
     <div class="work-card tilt-card">
       <div class="work-thumb" style="background:#080810;">
-        <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
-          <rect width="480" height="220" fill="#080810"/>
-          <radialGradient id="glow2" cx="55%" cy="40%" r="55%">
-            <stop offset="0%" stop-color="#2468FF" stop-opacity="0.1"/>
-            <stop offset="100%" stop-color="#2468FF" stop-opacity="0"/>
-          </radialGradient>
-          <rect width="480" height="220" fill="url(#glow2)"/>
-          <rect x="55" y="14" width="370" height="192" rx="8" fill="#0c0c1c" stroke="rgba(36,104,255,0.18)" stroke-width="0.5"/>
-          <rect x="55" y="14" width="370" height="30" rx="8" fill="#10101e"/>
-          <circle cx="78" cy="29" r="5" fill="rgba(255,95,86,0.55)"/>
-          <circle cx="94" cy="29" r="5" fill="rgba(255,189,46,0.55)"/>
-          <circle cx="110" cy="29" r="5" fill="rgba(39,201,63,0.55)"/>
-          <rect x="138" y="21" width="190" height="16" rx="8" fill="rgba(36,104,255,0.07)" stroke="rgba(36,104,255,0.16)" stroke-width="0.5"/>
-          <text x="233" y="33" font-size="7" text-anchor="middle" fill="rgba(140,160,255,0.6)" font-family="monospace">mayorgalabs.com</text>
-          <rect x="55" y="44" width="370" height="162" fill="#090913"/>
-          <rect x="76" y="58" width="130" height="12" rx="3" fill="rgba(240,236,230,0.82)"/>
-          <rect x="76" y="75" width="100" height="9" rx="3" fill="rgba(240,236,230,0.35)"/>
-          <rect x="76" y="88" width="118" height="9" rx="3" fill="rgba(240,236,230,0.22)"/>
-          <rect x="76" y="106" width="88" height="24" rx="3" fill="#2468FF"/>
-          <text x="120" y="122" font-size="8.5" text-anchor="middle" fill="#fff" font-family="monospace">Começar →</text>
-          <rect x="265" y="54" width="145" height="142" rx="5" fill="rgba(36,104,255,0.05)" stroke="rgba(36,104,255,0.14)" stroke-width="0.5"/>
-          <circle cx="337" cy="125" r="34" fill="rgba(36,104,255,0.07)" stroke="rgba(36,104,255,0.18)" stroke-width="0.5"/>
-          <text x="337" y="130" font-size="22" text-anchor="middle" fill="rgba(36,104,255,0.45)">◈</text>
-          <rect x="55" y="172" width="370" height="1" fill="rgba(36,104,255,0.08)"/>
-          <text x="110" y="186" font-size="7" text-anchor="middle" fill="rgba(140,160,255,0.45)" font-family="monospace">+240% conversão</text>
-          <text x="240" y="186" font-size="7" text-anchor="middle" fill="rgba(140,160,255,0.45)" font-family="monospace">0.8s load</text>
-          <text x="365" y="186" font-size="7" text-anchor="middle" fill="rgba(140,160,255,0.45)" font-family="monospace">100 Lighthouse</text>
-        </svg>
+        <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg"><rect width="480" height="220" fill="#080810"/><radialGradient id="glow2" cx="55%" cy="40%" r="55%"><stop offset="0%" stop-color="#2468FF" stop-opacity="0.1"/><stop offset="100%" stop-color="#2468FF" stop-opacity="0"/></radialGradient><rect width="480" height="220" fill="url(#glow2)"/><rect x="55" y="14" width="370" height="192" rx="8" fill="#0c0c1c" stroke="rgba(36,104,255,0.18)" stroke-width="0.5"/><rect x="55" y="14" width="370" height="30" rx="8" fill="#10101e"/><circle cx="78" cy="29" r="5" fill="rgba(255,95,86,0.55)"/><circle cx="94" cy="29" r="5" fill="rgba(255,189,46,0.55)"/><circle cx="110" cy="29" r="5" fill="rgba(39,201,63,0.55)"/><rect x="138" y="21" width="190" height="16" rx="8" fill="rgba(36,104,255,0.07)" stroke="rgba(36,104,255,0.16)" stroke-width="0.5"/><text x="233" y="33" font-size="7" text-anchor="middle" fill="rgba(140,160,255,0.6)" font-family="monospace">mayorgalabs.com</text><rect x="55" y="44" width="370" height="162" fill="#090913"/><rect x="76" y="58" width="130" height="12" rx="3" fill="rgba(240,236,230,0.82)"/><rect x="76" y="75" width="100" height="9" rx="3" fill="rgba(240,236,230,0.35)"/><rect x="76" y="88" width="118" height="9" rx="3" fill="rgba(240,236,230,0.22)"/><rect x="76" y="106" width="88" height="24" rx="3" fill="#2468FF"/><text x="120" y="122" font-size="8.5" text-anchor="middle" fill="#fff" font-family="monospace">Começar →</text><rect x="265" y="54" width="145" height="142" rx="5" fill="rgba(36,104,255,0.05)" stroke="rgba(36,104,255,0.14)" stroke-width="0.5"/><circle cx="337" cy="125" r="34" fill="rgba(36,104,255,0.07)" stroke="rgba(36,104,255,0.18)" stroke-width="0.5"/><text x="337" y="130" font-size="22" text-anchor="middle" fill="rgba(36,104,255,0.45)">◈</text><rect x="55" y="172" width="370" height="1" fill="rgba(36,104,255,0.08)"/><text x="110" y="186" font-size="7" text-anchor="middle" fill="rgba(140,160,255,0.45)" font-family="monospace">+240% conversão</text><text x="240" y="186" font-size="7" text-anchor="middle" fill="rgba(140,160,255,0.45)" font-family="monospace">0.8s load</text><text x="365" y="186" font-size="7" text-anchor="middle" fill="rgba(140,160,255,0.45)" font-family="monospace">100 Lighthouse</text></svg>
       </div>
       <div class="work-info">
-        <div class="work-type">Landing Page / Conversão</div>
-        <div class="work-title">Página de Alta Conversão</div>
-        <div class="work-desc">Design moderno, carregamento ultra-rápido e estrutura pensada para converter desde o primeiro scroll.</div>
-        <div class="work-meta">
-          <span class="work-arrow">→</span>
-        </div>
+        <div class="work-type" data-i18n="w2_type">Landing Page / Conversão</div>
+        <div class="work-title" data-i18n="w2_title">Página de Alta Conversão</div>
+        <div class="work-desc" data-i18n="w2_desc">Design moderno, carregamento ultra-rápido e estrutura pensada para converter desde o primeiro scroll.</div>
+        <div class="work-meta"><span class="work-arrow">→</span></div>
       </div>
     </div>
-
-    <!-- Card 3 -->
     <div class="work-card tilt-card">
       <div class="work-thumb" style="background:#0a0810;">
-        <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
-          <rect width="480" height="220" fill="#0a0810"/>
-          <radialGradient id="glow3" cx="60%" cy="30%" r="55%">
-            <stop offset="0%" stop-color="#a855f7" stop-opacity="0.1"/>
-            <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
-          </radialGradient>
-          <rect width="480" height="220" fill="url(#glow3)"/>
-          <rect x="38" y="14" width="404" height="192" rx="7" fill="#0d0b14" stroke="rgba(168,85,247,0.14)" stroke-width="0.5"/>
-          <rect x="38" y="14" width="88" height="192" fill="#0b0912"/>
-          <rect x="126" y="14" width="0.5" height="192" fill="rgba(168,85,247,0.1)"/>
-          <text x="82" y="38" font-size="7.5" text-anchor="middle" fill="rgba(168,85,247,0.55)" font-family="monospace" letter-spacing="1">PAINEL</text>
-          <rect x="50" y="46" width="64" height="16" rx="3" fill="rgba(168,85,247,0.18)"/>
-          <text x="82" y="58" font-size="7" text-anchor="middle" fill="#a855f7" font-family="monospace">Dashboard</text>
-          <text x="82" y="78" font-size="7" text-anchor="middle" fill="rgba(255,255,255,0.28)" font-family="monospace">Conversas</text>
-          <text x="82" y="96" font-size="7" text-anchor="middle" fill="rgba(255,255,255,0.28)" font-family="monospace">Analytics</text>
-          <rect x="140" y="26" width="82" height="54" rx="5" fill="rgba(168,85,247,0.07)" stroke="rgba(168,85,247,0.18)" stroke-width="0.5"/>
-          <text x="181" y="50" font-size="17" text-anchor="middle" fill="#a855f7" font-weight="bold" font-family="sans-serif">847</text>
-          <text x="181" y="66" font-size="6" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="monospace">Conversas/mês</text>
-          <rect x="234" y="26" width="82" height="54" rx="5" fill="rgba(168,85,247,0.07)" stroke="rgba(168,85,247,0.18)" stroke-width="0.5"/>
-          <text x="275" y="50" font-size="17" text-anchor="middle" fill="#a855f7" font-weight="bold" font-family="sans-serif">94%</text>
-          <text x="275" y="66" font-size="6" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="monospace">Resolvidos auto</text>
-          <rect x="328" y="26" width="82" height="54" rx="5" fill="rgba(168,85,247,0.07)" stroke="rgba(168,85,247,0.18)" stroke-width="0.5"/>
-          <text x="369" y="50" font-size="17" text-anchor="middle" fill="#a855f7" font-weight="bold" font-family="sans-serif">2.1s</text>
-          <text x="369" y="66" font-size="6" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="monospace">Tempo resposta</text>
-          <rect x="140" y="90" width="270" height="100" rx="5" fill="rgba(168,85,247,0.04)" stroke="rgba(168,85,247,0.1)" stroke-width="0.5"/>
-          <polyline points="152,174 181,152 210,162 239,136 268,148 297,120 326,132 355,106 384,112 402,96" fill="none" stroke="rgba(168,85,247,0.7)" stroke-width="1.5"/>
-          <polyline points="152,174 181,152 210,162 239,136 268,148 297,120 326,132 355,106 384,112 402,96 402,184 152,184" fill="rgba(168,85,247,0.05)"/>
-          <line x1="152" y1="140" x2="402" y2="140" stroke="rgba(168,85,247,0.06)" stroke-width="0.5"/>
-          <line x1="152" y1="120" x2="402" y2="120" stroke="rgba(168,85,247,0.06)" stroke-width="0.5"/>
-        </svg>
+        <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg"><rect width="480" height="220" fill="#0a0810"/><radialGradient id="glow3" cx="60%" cy="30%" r="55%"><stop offset="0%" stop-color="#a855f7" stop-opacity="0.1"/><stop offset="100%" stop-color="#a855f7" stop-opacity="0"/></radialGradient><rect width="480" height="220" fill="url(#glow3)"/><rect x="38" y="14" width="404" height="192" rx="7" fill="#0d0b14" stroke="rgba(168,85,247,0.14)" stroke-width="0.5"/><rect x="38" y="14" width="88" height="192" fill="#0b0912"/><rect x="126" y="14" width="0.5" height="192" fill="rgba(168,85,247,0.1)"/><text x="82" y="38" font-size="7.5" text-anchor="middle" fill="rgba(168,85,247,0.55)" font-family="monospace" letter-spacing="1">PAINEL</text><rect x="50" y="46" width="64" height="16" rx="3" fill="rgba(168,85,247,0.18)"/><text x="82" y="58" font-size="7" text-anchor="middle" fill="#a855f7" font-family="monospace">Dashboard</text><text x="82" y="78" font-size="7" text-anchor="middle" fill="rgba(255,255,255,0.28)" font-family="monospace">Conversas</text><text x="82" y="96" font-size="7" text-anchor="middle" fill="rgba(255,255,255,0.28)" font-family="monospace">Analytics</text><rect x="140" y="26" width="82" height="54" rx="5" fill="rgba(168,85,247,0.07)" stroke="rgba(168,85,247,0.18)" stroke-width="0.5"/><text x="181" y="50" font-size="17" text-anchor="middle" fill="#a855f7" font-weight="bold" font-family="sans-serif">847</text><text x="181" y="66" font-size="6" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="monospace">Conversas/mês</text><rect x="234" y="26" width="82" height="54" rx="5" fill="rgba(168,85,247,0.07)" stroke="rgba(168,85,247,0.18)" stroke-width="0.5"/><text x="275" y="50" font-size="17" text-anchor="middle" fill="#a855f7" font-weight="bold" font-family="sans-serif">94%</text><text x="275" y="66" font-size="6" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="monospace">Auto-resolved</text><rect x="328" y="26" width="82" height="54" rx="5" fill="rgba(168,85,247,0.07)" stroke="rgba(168,85,247,0.18)" stroke-width="0.5"/><text x="369" y="50" font-size="17" text-anchor="middle" fill="#a855f7" font-weight="bold" font-family="sans-serif">2.1s</text><text x="369" y="66" font-size="6" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="monospace">Avg response</text><rect x="140" y="90" width="270" height="100" rx="5" fill="rgba(168,85,247,0.04)" stroke="rgba(168,85,247,0.1)" stroke-width="0.5"/><polyline points="152,174 181,152 210,162 239,136 268,148 297,120 326,132 355,106 384,112 402,96" fill="none" stroke="rgba(168,85,247,0.7)" stroke-width="1.5"/><polyline points="152,174 181,152 210,162 239,136 268,148 297,120 326,132 355,106 384,112 402,96 402,184 152,184" fill="rgba(168,85,247,0.05)"/></svg>
       </div>
       <div class="work-info">
-        <div class="work-type">Dashboard / Analytics</div>
-        <div class="work-title">Dashboard de Agentes</div>
-        <div class="work-desc">Painel de controle para monitoramento de automações, volume de conversas e taxa de resolução em tempo real.</div>
-        <div class="work-meta">
-          <span class="work-arrow">→</span>
-        </div>
+        <div class="work-type" data-i18n="w3_type">Dashboard / Analytics</div>
+        <div class="work-title" data-i18n="w3_title">Dashboard de Agentes</div>
+        <div class="work-desc" data-i18n="w3_desc">Painel de controle para monitoramento de automações, volume de conversas e taxa de resolução em tempo real.</div>
+        <div class="work-meta"><span class="work-arrow">→</span></div>
       </div>
     </div>
-
-    <!-- Card 4 -->
     <div class="work-card tilt-card">
       <div class="work-thumb" style="background:#0f0b05;">
-        <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
-          <rect width="480" height="220" fill="#0f0b05"/>
-          <radialGradient id="glow4" cx="50%" cy="55%" r="55%">
-            <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.1"/>
-            <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
-          </radialGradient>
-          <rect width="480" height="220" fill="url(#glow4)"/>
-          <rect x="28" y="88" width="84" height="44" rx="6" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.35)" stroke-width="0.5"/>
-          <text x="70" y="107" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.6)" font-family="monospace">TRIGGER</text>
-          <text x="70" y="121" font-size="8.5" text-anchor="middle" fill="#f0ece6" font-family="monospace">Novo Lead</text>
-          <line x1="112" y1="110" x2="138" y2="110" stroke="rgba(245,158,11,0.35)" stroke-width="1" stroke-dasharray="4,3"/>
-          <polygon points="138,106 146,110 138,114" fill="rgba(245,158,11,0.5)"/>
-          <rect x="146" y="88" width="84" height="44" rx="6" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.35)" stroke-width="0.5"/>
-          <text x="188" y="107" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.6)" font-family="monospace">PROCESSO</text>
-          <text x="188" y="121" font-size="8.5" text-anchor="middle" fill="#f0ece6" font-family="monospace">IA Analisa</text>
-          <line x1="230" y1="110" x2="250" y2="110" stroke="rgba(245,158,11,0.35)" stroke-width="1" stroke-dasharray="4,3"/>
-          <polygon points="250,106 258,110 250,114" fill="rgba(245,158,11,0.5)"/>
-          <line x1="258" y1="110" x2="258" y2="72" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/>
-          <line x1="258" y1="110" x2="258" y2="148" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/>
-          <rect x="258" y="56" width="84" height="38" rx="6" fill="rgba(245,158,11,0.07)" stroke="rgba(245,158,11,0.22)" stroke-width="0.5"/>
-          <text x="300" y="72" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.5)" font-family="monospace">AÇÃO A</text>
-          <text x="300" y="85" font-size="8.5" text-anchor="middle" fill="rgba(240,236,230,0.65)" font-family="monospace">WhatsApp</text>
-          <rect x="258" y="126" width="84" height="38" rx="6" fill="rgba(245,158,11,0.07)" stroke="rgba(245,158,11,0.22)" stroke-width="0.5"/>
-          <text x="300" y="142" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.5)" font-family="monospace">AÇÃO B</text>
-          <text x="300" y="155" font-size="8.5" text-anchor="middle" fill="rgba(240,236,230,0.65)" font-family="monospace">E-mail</text>
-          <line x1="342" y1="75" x2="365" y2="75" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/>
-          <line x1="365" y1="75" x2="365" y2="110" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/>
-          <line x1="342" y1="145" x2="365" y2="145" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/>
-          <line x1="365" y1="145" x2="365" y2="110" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/>
-          <line x1="365" y1="110" x2="374" y2="110" stroke="rgba(245,158,11,0.35)" stroke-width="1" stroke-dasharray="4,3"/>
-          <polygon points="374,106 382,110 374,114" fill="rgba(245,158,11,0.5)"/>
-          <rect x="382" y="88" width="76" height="44" rx="6" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.5)" stroke-width="0.5"/>
-          <text x="420" y="107" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.8)" font-family="monospace">RESULTADO</text>
-          <text x="420" y="121" font-size="8.5" text-anchor="middle" fill="#f0ece6" font-family="monospace">CRM Update</text>
-          <text x="240" y="198" font-size="7" text-anchor="middle" fill="rgba(245,158,11,0.28)" font-family="monospace">n8n workflow, automação completa de captação</text>
-        </svg>
+        <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg"><rect width="480" height="220" fill="#0f0b05"/><radialGradient id="glow4" cx="50%" cy="55%" r="55%"><stop offset="0%" stop-color="#f59e0b" stop-opacity="0.1"/><stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/></radialGradient><rect width="480" height="220" fill="url(#glow4)"/><rect x="28" y="88" width="84" height="44" rx="6" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.35)" stroke-width="0.5"/><text x="70" y="107" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.6)" font-family="monospace">TRIGGER</text><text x="70" y="121" font-size="8.5" text-anchor="middle" fill="#f0ece6" font-family="monospace">New Lead</text><line x1="112" y1="110" x2="138" y2="110" stroke="rgba(245,158,11,0.35)" stroke-width="1" stroke-dasharray="4,3"/><polygon points="138,106 146,110 138,114" fill="rgba(245,158,11,0.5)"/><rect x="146" y="88" width="84" height="44" rx="6" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.35)" stroke-width="0.5"/><text x="188" y="107" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.6)" font-family="monospace">PROCESS</text><text x="188" y="121" font-size="8.5" text-anchor="middle" fill="#f0ece6" font-family="monospace">AI Analyzes</text><line x1="230" y1="110" x2="250" y2="110" stroke="rgba(245,158,11,0.35)" stroke-width="1" stroke-dasharray="4,3"/><polygon points="250,106 258,110 250,114" fill="rgba(245,158,11,0.5)"/><line x1="258" y1="110" x2="258" y2="72" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/><line x1="258" y1="110" x2="258" y2="148" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/><rect x="258" y="56" width="84" height="38" rx="6" fill="rgba(245,158,11,0.07)" stroke="rgba(245,158,11,0.22)" stroke-width="0.5"/><text x="300" y="72" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.5)" font-family="monospace">ACTION A</text><text x="300" y="85" font-size="8.5" text-anchor="middle" fill="rgba(240,236,230,0.65)" font-family="monospace">WhatsApp</text><rect x="258" y="126" width="84" height="38" rx="6" fill="rgba(245,158,11,0.07)" stroke="rgba(245,158,11,0.22)" stroke-width="0.5"/><text x="300" y="142" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.5)" font-family="monospace">ACTION B</text><text x="300" y="155" font-size="8.5" text-anchor="middle" fill="rgba(240,236,230,0.65)" font-family="monospace">E-mail</text><line x1="342" y1="75" x2="365" y2="75" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/><line x1="365" y1="75" x2="365" y2="110" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/><line x1="342" y1="145" x2="365" y2="145" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/><line x1="365" y1="145" x2="365" y2="110" stroke="rgba(245,158,11,0.25)" stroke-width="0.5"/><line x1="365" y1="110" x2="374" y2="110" stroke="rgba(245,158,11,0.35)" stroke-width="1" stroke-dasharray="4,3"/><polygon points="374,106 382,110 374,114" fill="rgba(245,158,11,0.5)"/><rect x="382" y="88" width="76" height="44" rx="6" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.5)" stroke-width="0.5"/><text x="420" y="107" font-size="6.5" text-anchor="middle" fill="rgba(245,158,11,0.8)" font-family="monospace">RESULT</text><text x="420" y="121" font-size="8.5" text-anchor="middle" fill="#f0ece6" font-family="monospace">CRM Update</text></svg>
       </div>
       <div class="work-info">
-        <div class="work-type">Workflow / Automação</div>
-        <div class="work-title">Fluxo de Captação</div>
-        <div class="work-desc">Automação completa do funil: trigger, qualificação por IA, ação multicanal e atualização de CRM.</div>
-        <div class="work-meta">
-          <span class="work-arrow">→</span>
-        </div>
+        <div class="work-type" data-i18n="w4_type">Workflow / Automação</div>
+        <div class="work-title" data-i18n="w4_title">Fluxo de Captação</div>
+        <div class="work-desc" data-i18n="w4_desc">Automação completa do funil: trigger, qualificação por IA, ação multicanal e atualização de CRM.</div>
+        <div class="work-meta"><span class="work-arrow">→</span></div>
       </div>
     </div>
   </div>
@@ -1099,50 +952,26 @@ footer {
 
 <!-- DIFERENCIAIS -->
 <section id="diferenciais">
-  <div class="section-label reveal">04 — Por que trabalhar comigo</div>
+  <div class="section-label reveal">04 — <span data-i18n="nav_why">Por que trabalhar comigo</span></div>
   <div class="why-grid reveal">
     <div>
       <h2 class="why-title">
-        Tech<br>
-        Encontra<br>
-        <span class="italic">Estética.</span>
+        <span data-i18n="why_t1">Tech</span><br>
+        <span data-i18n="why_t2">Encontra</span><br>
+        <span class="italic" data-i18n="why_t3">Estética.</span>
       </h2>
     </div>
     <div>
       <div class="diff-featured">
-        <div class="diff-label">◈ Principal diferencial</div>
-        <h4>Direção Criativa</h4>
-        <p>Tenho olhar de designer em tudo que construo. Nada é entregue sem parecer intencional.</p>
+        <div class="diff-label" data-i18n="diff_label">◈ Principal diferencial</div>
+        <h4 data-i18n="diff0_h">Direção Criativa</h4>
+        <p data-i18n="diff0_p">Tenho olhar de designer em tudo que construo. Nada é entregue sem parecer intencional.</p>
       </div>
       <div class="differentials">
-        <div class="differential">
-          <span class="diff-glyph">◇</span>
-          <div class="diff-content">
-            <h4>Estética Moderna</h4>
-            <p>Sua marca não vai parecer um template genérico. Identidade visual distintiva desde o primeiro dia.</p>
-          </div>
-        </div>
-        <div class="differential">
-          <span class="diff-glyph">⬡</span>
-          <div class="diff-content">
-            <h4>Tecnologia Invisível</h4>
-            <p>A tecnologia trabalha por baixo. O que o cliente vê é resultado. Não ferramenta, resultado.</p>
-          </div>
-        </div>
-        <div class="differential">
-          <span class="diff-glyph">▷</span>
-          <div class="diff-content">
-            <h4>Mentalidade de Construtor</h4>
-            <p>Processo objetivo, execução eficiente. Foco em entregar valor real.</p>
-          </div>
-        </div>
-        <div class="differential">
-          <span class="diff-glyph">◉</span>
-          <div class="diff-content">
-            <h4>Comunicação que Converte</h4>
-            <p>Falo tech e negócio. Sem jargão desnecessário, apenas resultados que fazem sentido pra você.</p>
-          </div>
-        </div>
+        <div class="differential"><span class="diff-glyph">◇</span><div class="diff-content"><h4 data-i18n="diff1_h">Estética Moderna</h4><p data-i18n="diff1_p">Sua marca não vai parecer um template genérico. Identidade visual distintiva desde o primeiro dia.</p></div></div>
+        <div class="differential"><span class="diff-glyph">⬡</span><div class="diff-content"><h4 data-i18n="diff2_h">Tecnologia Invisível</h4><p data-i18n="diff2_p">A tecnologia trabalha por baixo. O que o cliente vê é resultado. Não ferramenta, resultado.</p></div></div>
+        <div class="differential"><span class="diff-glyph">▷</span><div class="diff-content"><h4 data-i18n="diff3_h">Mentalidade de Construtor</h4><p data-i18n="diff3_p">Processo objetivo, execução eficiente. Foco em entregar valor real.</p></div></div>
+        <div class="differential"><span class="diff-glyph">◉</span><div class="diff-content"><h4 data-i18n="diff4_h">Comunicação que Converte</h4><p data-i18n="diff4_p">Falo tech e negócio. Sem jargão desnecessário, apenas resultados que fazem sentido pra você.</p></div></div>
       </div>
     </div>
   </div>
@@ -1150,92 +979,28 @@ footer {
 
 <!-- PROCESSO -->
 <section class="process-section">
-  <div class="section-label reveal">05 — Processo</div>
+  <div class="section-label reveal">05 — <span data-i18n="nav_process">Processo</span></div>
   <div class="process-track reveal">
     <div class="process-line"></div>
     <div class="process-steps">
-      <div class="step">
-        <span class="step-num">01</span>
-        <h3 class="step-title">Descoberta</h3>
-        <p class="step-desc">Entendo seu negócio, objetivos e gargalos atuais. Defino o que sucesso realmente significa pra você.</p>
-      </div>
-      <div class="step">
-        <span class="step-num">02</span>
-        <h3 class="step-title">Design</h3>
-        <p class="step-desc">Mapeio o sistema ou interface. Decisões estéticas e funcionais antes de qualquer linha de código.</p>
-      </div>
-      <div class="step">
-        <span class="step-num">03</span>
-        <h3 class="step-title">Construção</h3>
-        <p class="step-desc">Executo com velocidade. Itero rápido. Entrego uma versão funcional antes de buscar a perfeição.</p>
-      </div>
-      <div class="step">
-        <span class="step-num">04</span>
-        <h3 class="step-title">Lançamento</h3>
-        <p class="step-desc">Deploy, teste, refinamento. Entrego com documentação completa para você manter o controle.</p>
-      </div>
+      <div class="step"><span class="step-num">01</span><h3 class="step-title" data-i18n="step1_t">Descoberta</h3><p class="step-desc" data-i18n="step1_d">Entendo seu negócio, objetivos e gargalos atuais. Defino o que sucesso realmente significa pra você.</p></div>
+      <div class="step"><span class="step-num">02</span><h3 class="step-title" data-i18n="step2_t">Design</h3><p class="step-desc" data-i18n="step2_d">Mapeio o sistema ou interface. Decisões estéticas e funcionais antes de qualquer linha de código.</p></div>
+      <div class="step"><span class="step-num">03</span><h3 class="step-title" data-i18n="step3_t">Construção</h3><p class="step-desc" data-i18n="step3_d">Executo com velocidade. Itero rápido. Entrego uma versão funcional antes de buscar a perfeição.</p></div>
+      <div class="step"><span class="step-num">04</span><h3 class="step-title" data-i18n="step4_t">Lançamento</h3><p class="step-desc" data-i18n="step4_d">Deploy, teste, refinamento. Entrego com documentação completa para você manter o controle.</p></div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
 <section id="faq" class="faq-section">
-  <div class="section-label">06 — Perguntas Frequentes</div>
+  <div class="section-label">06 — FAQ</div>
   <div class="faq-wrap">
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        <span>Quanto tempo leva um projeto?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        <p>Depende do escopo. Uma landing page simples sai em 3–5 dias. Uma automação completa com integração de CRM pode levar de 1 a 2 semanas. Sempre alinho o prazo antes de começar.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        <span>Você trabalha remoto?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        <p>Sim, 100% remoto. Atendo clientes em qualquer cidade do Brasil e no exterior. Toda a comunicação acontece via WhatsApp ou videochamada.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        <span>Preciso saber de tecnologia para contratar?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        <p>Não. Meu trabalho é justamente traduzir o que o seu negócio precisa em sistemas que funcionam. Você foca no resultado, eu cuido da execução.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        <span>Quanto custa um projeto?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        <p>Depende do escopo e complexidade. Landing pages a partir de R$800. Automações e sistemas digitais a partir de R$1.200. Projetos maiores ou com múltiplos módulos têm orçamento personalizado, sempre com escopo fechado antes de começar, sem surpresas.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        <span>Como funciona o pagamento?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        <p>50% na aprovação do escopo, 50% na entrega. Aceito Pix, transferência e cartão. Para projetos maiores, posso parcelar em até 3x.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        <span>Você oferece suporte depois da entrega?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">
-        <p>Todo projeto inclui 15 dias de suporte gratuito após a entrega. Para suporte contínuo, temos planos mensais disponíveis.</p>
-      </div>
-    </div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq1_q">Quanto tempo leva um projeto?</span><span class="faq-icon">+</span></button><div class="faq-a"><p data-i18n="faq1_a">Depende do escopo. Uma landing page simples sai em 3–5 dias. Uma automação completa com integração de CRM pode levar de 1 a 2 semanas. Sempre alinho o prazo antes de começar.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq2_q">Você trabalha remoto?</span><span class="faq-icon">+</span></button><div class="faq-a"><p data-i18n="faq2_a">Sim, 100% remoto. Atendo clientes em qualquer cidade do Brasil e no exterior. Toda a comunicação acontece via WhatsApp ou videochamada.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq3_q">Preciso saber de tecnologia para contratar?</span><span class="faq-icon">+</span></button><div class="faq-a"><p data-i18n="faq3_a">Não. Meu trabalho é justamente traduzir o que o seu negócio precisa em sistemas que funcionam. Você foca no resultado, eu cuido da execução.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq4_q">Quanto custa um projeto?</span><span class="faq-icon">+</span></button><div class="faq-a"><p data-i18n="faq4_a">Depende do escopo e complexidade. Landing pages a partir de R$800. Automações a partir de R$1.200. Projetos maiores têm orçamento personalizado, sempre com escopo fechado antes de começar.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq5_q">Como funciona o pagamento?</span><span class="faq-icon">+</span></button><div class="faq-a"><p data-i18n="faq5_a">50% na aprovação do escopo, 50% na entrega. Aceito Pix, transferência e cartão. Para projetos maiores, posso parcelar em até 3x.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq6_q">Você oferece suporte depois da entrega?</span><span class="faq-icon">+</span></button><div class="faq-a"><p data-i18n="faq6_a">Todo projeto inclui 15 dias de suporte gratuito após a entrega. Para suporte contínuo, temos planos mensais disponíveis.</p></div></div>
   </div>
 </section>
 
@@ -1245,54 +1010,207 @@ footer {
   <div class="contact-glow-2"></div>
   <div class="contact-ghost">LAB</div>
   <div class="contact-inner">
-    <div class="section-label reveal">07 — Contato</div>
+    <div class="section-label reveal">07 — <span data-i18n="nav_contact">Contato</span></div>
     <h2 class="contact-title reveal">
-      Vamos<br>
-      <span class="outline">Construir</span><br>
-      Algo?
+      <span data-i18n="contact_t1">Vamos</span><br>
+      <span class="outline" data-i18n="contact_t2">Construir</span><br>
+      <span data-i18n="contact_t3">Algo?</span>
     </h2>
     <div class="contact-bottom reveal">
       <div style="display:flex;flex-direction:column;gap:0.35rem;">
-        <a class="contact-link primary" href="https://wa.me/5524988531426" target="_blank">
-          WhatsApp <span class="arrow">→</span>
-        </a>
+        <a class="contact-link primary" href="https://wa.me/5524988531426" target="_blank">WhatsApp <span class="arrow">→</span></a>
         <span class="contact-phone">+55 24 98853-1426</span>
       </div>
-      <a class="contact-link" href="https://instagram.com/mayorgalabs" target="_blank">
-        Instagram <span class="arrow">→</span>
-      </a>
-      <a class="contact-link" href="mailto:pedromayorgaamaral@gmail.com">
-        E-mail <span class="arrow">→</span>
-      </a>
+      <a class="contact-link" href="https://instagram.com/mayorgalabs" target="_blank">Instagram <span class="arrow">→</span></a>
+      <a class="contact-link" href="mailto:pedromayorgaamaral@gmail.com">E-mail <span class="arrow">→</span></a>
       <div class="contact-note">
-        DM para projetos, colaborações<br>
-        e sistemas customizados.<br>
+        <span data-i18n="contact_note">DM para projetos, colaborações e sistemas customizados.</span><br>
         <span style="color:var(--current)">@mayorgalabs</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">MAYORGALABS</div>
   <div class="footer-meta">
-    Sistemas Criativos & Soluções Digitais<br>
-    Construindo experiências digitais modernas. BR/Global
+    <span data-i18n="footer_sub">Sistemas Criativos & Soluções Digitais</span><br>
+    <span data-i18n="footer_tag">Construindo experiências digitais modernas. BR/Global</span>
   </div>
 </footer>
 
 <script>
-/* ── Hamburger menu ──────────────────────────── */
-const hamburger   = document.getElementById('hamburger');
-const mobileMenu  = document.getElementById('mobile-menu');
+/* ── i18n translations ───────────────────────── */
+const translations = {
+  pt: {
+    nav_about:'Sobre', nav_services:'Serviços', nav_work:'Trabalhos Selecionados',
+    nav_why:'Por que trabalhar comigo', nav_process:'Processo', nav_contact:'Contato',
+    nav_status:'Disponível', nav_cta:'Falar agora →',
+    hero_line1:'Sistemas', hero_line2:'Criativos', hero_line3:'Soluções', hero_line4:'Digitais',
+    hero_tagline:'Você foca no negócio. Eu cuido do resto: automação, design e sistemas que trabalham por você 24h.',
+    hero_cta:'Começar um projeto',
+    tag1:'→ Automações Inteligentes', tag2:'→ Landing Pages',
+    tag3:'→ Desenvolvimento Criativo', tag4:'→ Sistemas Digitais',
+    marq1:'Sistemas de Conteúdo', marq2:'Fluxos Digitais', marq3:'Agentes Inteligentes', marq4:'Identidade Visual',
+    about_title1:'Mais do que', about_title2:'Desenvolvedor.', about_title3:'Um Construtor.',
+    about_p1:'Ajudo <strong>negócios e creators</strong> a modernizar processos com automações inteligentes, sistemas digitais e direção visual premium.',
+    about_p2:'A maioria dos técnicos não sabe comunicar. A maioria dos designers não sabe construir. Eu fico na interseção.',
+    pill2:'Sistemas Digitais', pill4:'Direção Criativa',
+    services_title:'O que<br>eu construo.', services_note:'Sistemas pensados pra funcionar, não só parecer bonito.',
+    s1_num:'AUTOMAÇÃO', s1_name:'Automação', s1_desc:'Processos manuais viram fluxos automáticos. Você define a regra, a máquina executa.',
+    s1_i1:'Agente de WhatsApp', s1_i2:'Captação de Leads', s1_i3:'CRM automatizado', s1_i4:'Email marketing', s1_i5:'Agendamento', s1_i6:'Notificações',
+    s2_num:'LANDING PAGE', s2_name:'Landing Page', s2_desc:'Páginas que vendem enquanto você dorme. Design premium, performance técnica e copy estratégico.',
+    s2_i1:'Design moderno', s2_i2:'SEO técnico', s2_i3:'Performance 100/100', s2_i4:'Mobile-first', s2_i5:'A/B testing', s2_i6:'Analytics',
+    s3_num:'AGENTES DE IA', s3_name:'Agentes de IA', s3_desc:'Sistemas que tomam decisões, respondem clientes e executam tarefas sem intervenção humana.',
+    s3_i1:'SDR automatizado', s3_i2:'Atendimento 24h', s3_i3:'Qualificação de leads', s3_i4:'Análise de dados', s3_i5:'Triagem inteligente',
+    s4_num:'DEV CRIATIVO', s4_name:'Dev Criativo', s4_desc:'Sensibilidade de design encontra execução técnica. Interfaces premium com intenção.',
+    s4_i1:'Interfaces minimalistas', s4_i2:'Sistemas visuais', s4_i3:'Creative tech', s4_i4:'Experiências digitais', s4_i5:'Presença online', s4_i6:'Identidade de marca',
+    w1_type:'Automação / WhatsApp', w1_title:'Atendimento Automático', w1_desc:'Captação e qualificação de leads via WhatsApp com agendamento integrado. 24h sem intervenção manual.',
+    w2_type:'Landing Page / Conversão', w2_title:'Página de Alta Conversão', w2_desc:'Design moderno, carregamento ultra-rápido e estrutura pensada para converter desde o primeiro scroll.',
+    w3_type:'Dashboard / Analytics', w3_title:'Dashboard de Agentes', w3_desc:'Painel de controle para monitoramento de automações, volume de conversas e taxa de resolução em tempo real.',
+    w4_type:'Workflow / Automação', w4_title:'Fluxo de Captação', w4_desc:'Automação completa do funil: trigger, qualificação por IA, ação multicanal e atualização de CRM.',
+    why_t1:'Tech', why_t2:'Encontra', why_t3:'Estética.',
+    diff_label:'◈ Principal diferencial',
+    diff0_h:'Direção Criativa', diff0_p:'Tenho olhar de designer em tudo que construo. Nada é entregue sem parecer intencional.',
+    diff1_h:'Estética Moderna', diff1_p:'Sua marca não vai parecer um template genérico. Identidade visual distintiva desde o primeiro dia.',
+    diff2_h:'Tecnologia Invisível', diff2_p:'A tecnologia trabalha por baixo. O que o cliente vê é resultado. Não ferramenta, resultado.',
+    diff3_h:'Mentalidade de Construtor', diff3_p:'Processo objetivo, execução eficiente. Foco em entregar valor real.',
+    diff4_h:'Comunicação que Converte', diff4_p:'Falo tech e negócio. Sem jargão desnecessário, apenas resultados que fazem sentido pra você.',
+    step1_t:'Descoberta', step1_d:'Entendo seu negócio, objetivos e gargalos atuais. Defino o que sucesso realmente significa pra você.',
+    step2_t:'Design', step2_d:'Mapeio o sistema ou interface. Decisões estéticas e funcionais antes de qualquer linha de código.',
+    step3_t:'Construção', step3_d:'Executo com velocidade. Itero rápido. Entrego uma versão funcional antes de buscar a perfeição.',
+    step4_t:'Lançamento', step4_d:'Deploy, teste, refinamento. Entrego com documentação completa para você manter o controle.',
+    faq1_q:'Quanto tempo leva um projeto?', faq1_a:'Depende do escopo. Uma landing page simples sai em 3–5 dias. Uma automação completa com integração de CRM pode levar de 1 a 2 semanas. Sempre alinho o prazo antes de começar.',
+    faq2_q:'Você trabalha remoto?', faq2_a:'Sim, 100% remoto. Atendo clientes em qualquer cidade do Brasil e no exterior. Toda a comunicação acontece via WhatsApp ou videochamada.',
+    faq3_q:'Preciso saber de tecnologia para contratar?', faq3_a:'Não. Meu trabalho é justamente traduzir o que o seu negócio precisa em sistemas que funcionam. Você foca no resultado, eu cuido da execução.',
+    faq4_q:'Quanto custa um projeto?', faq4_a:'Depende do escopo e complexidade. Landing pages a partir de R$800. Automações a partir de R$1.200. Projetos maiores têm orçamento personalizado, sempre com escopo fechado antes de começar.',
+    faq5_q:'Como funciona o pagamento?', faq5_a:'50% na aprovação do escopo, 50% na entrega. Aceito Pix, transferência e cartão. Para projetos maiores, posso parcelar em até 3x.',
+    faq6_q:'Você oferece suporte depois da entrega?', faq6_a:'Todo projeto inclui 15 dias de suporte gratuito após a entrega. Para suporte contínuo, temos planos mensais disponíveis.',
+    contact_t1:'Vamos', contact_t2:'Construir', contact_t3:'Algo?',
+    contact_note:'DM para projetos, colaborações e sistemas customizados.',
+    footer_sub:'Sistemas Criativos & Soluções Digitais', footer_tag:'Construindo experiências digitais modernas. BR/Global'
+  },
+  en: {
+    nav_about:'About', nav_services:'Services', nav_work:'Selected Work',
+    nav_why:'Why work with me', nav_process:'Process', nav_contact:'Contact',
+    nav_status:'Available', nav_cta:'Start a project →',
+    hero_line1:'Creative', hero_line2:'Systems', hero_line3:'&amp; Digital', hero_line4:'Solutions',
+    hero_tagline:'You focus on your business. I handle the rest: automation, design and systems working 24/7 for you.',
+    hero_cta:'Start a project',
+    tag1:'→ Intelligent Automation', tag2:'→ Landing Pages',
+    tag3:'→ Creative Development', tag4:'→ Digital Systems',
+    marq1:'Content Systems', marq2:'Digital Workflows', marq3:'Intelligent Agents', marq4:'Visual Identity',
+    about_title1:'More than a', about_title2:'Developer.', about_title3:'A Builder.',
+    about_p1:'I help <strong>businesses and creators</strong> modernize their processes with intelligent automations, digital systems and premium visual direction.',
+    about_p2:'Most technical people can\'t communicate. Most designers can\'t build. I sit at the intersection.',
+    pill2:'Digital Systems', pill4:'Creative Direction',
+    services_title:'What I<br>build.', services_note:'Systems designed to work, not just look good.',
+    s1_num:'AUTOMATION', s1_name:'Automation', s1_desc:'Manual processes become automatic flows. You set the rule, the machine executes.',
+    s1_i1:'WhatsApp Agent', s1_i2:'Lead Capture', s1_i3:'Automated CRM', s1_i4:'Email marketing', s1_i5:'Scheduling', s1_i6:'Smart notifications',
+    s2_num:'LANDING PAGE', s2_name:'Landing Page', s2_desc:'Pages that sell while you sleep. Premium design, technical performance and strategic copy.',
+    s2_i1:'Modern design', s2_i2:'Technical SEO', s2_i3:'Performance 100/100', s2_i4:'Mobile-first', s2_i5:'A/B testing', s2_i6:'Analytics',
+    s3_num:'AI AGENTS', s3_name:'AI Agents', s3_desc:'Systems that make decisions, respond to clients and execute tasks without human intervention.',
+    s3_i1:'Automated SDR', s3_i2:'24h support', s3_i3:'Lead qualification', s3_i4:'Data analysis', s3_i5:'Intelligent triage',
+    s4_num:'CREATIVE DEV', s4_name:'Creative Dev', s4_desc:'Design sensibility meets technical execution. Premium interfaces with intention.',
+    s4_i1:'Minimal interfaces', s4_i2:'Visual systems', s4_i3:'Creative tech', s4_i4:'Digital experiences', s4_i5:'Online presence', s4_i6:'Brand identity',
+    w1_type:'Automation / WhatsApp', w1_title:'Automatic Support', w1_desc:'Lead capture and qualification via WhatsApp with integrated scheduling. 24h without manual intervention.',
+    w2_type:'Landing Page / Conversion', w2_title:'High-Conversion Page', w2_desc:'Modern design, ultra-fast loading and structure built to convert from the first scroll.',
+    w3_type:'Dashboard / Analytics', w3_title:'Agents Dashboard', w3_desc:'Control panel for monitoring automations, conversation volume and resolution rate in real time.',
+    w4_type:'Workflow / Automation', w4_title:'Lead Capture Flow', w4_desc:'Complete funnel automation: trigger, AI qualification, multi-channel action and CRM update.',
+    why_t1:'Tech', why_t2:'Meets', why_t3:'Aesthetics.',
+    diff_label:'◈ Key differentiator',
+    diff0_h:'Creative Direction', diff0_p:'I bring a designer\'s eye to everything I build. Nothing ships without looking intentional.',
+    diff1_h:'Modern Aesthetics', diff1_p:'Your brand won\'t look like a generic agency template. Distinctive visual identity from day one.',
+    diff2_h:'Invisible Technology', diff2_p:'Technology works underneath. What the client sees is results. Not tools, results.',
+    diff3_h:'Builder Mindset', diff3_p:'Objective process, efficient execution. Focus on delivering real value.',
+    diff4_h:'Communication that Converts', diff4_p:'I speak tech and business. No unnecessary jargon, just results that make sense for you.',
+    step1_t:'Discovery', step1_d:'I understand your business, goals and current bottlenecks. Define what success really means for you.',
+    step2_t:'Design', step2_d:'Map the system or interface. Aesthetic and functional decisions before any line of code.',
+    step3_t:'Build', step3_d:'Execute with speed. Iterate fast. Deliver a working version before chasing perfection.',
+    step4_t:'Launch', step4_d:'Deploy, test, refine. Deliver with full documentation so you stay in control.',
+    faq1_q:'How long does a project take?', faq1_a:'Depends on scope. A simple landing page ships in 3–5 days. Full automation with CRM integration can take 1–2 weeks. I always align timelines before starting.',
+    faq2_q:'Do you work remotely?', faq2_a:'Yes, 100% remote. I serve clients anywhere in Brazil and internationally. All communication via WhatsApp or video call.',
+    faq3_q:'Do I need technical knowledge to hire you?', faq3_a:"No. My job is to translate what your business needs into systems that work. You focus on results, I handle the execution.",
+    faq4_q:'How much does a project cost?', faq4_a:'Depends on scope and complexity. Landing pages from R$800. Automations from R$1,200. Larger projects have custom quotes, always with a closed scope before starting.',
+    faq5_q:'How does payment work?', faq5_a:'50% on scope approval, 50% on delivery. I accept Pix, bank transfer and card. For larger projects, installments up to 3x.',
+    faq6_q:'Do you offer post-delivery support?', faq6_a:'Every project includes 15 days of free support after delivery. For ongoing support, monthly plans are available.',
+    contact_t1:'Let\'s', contact_t2:'Build', contact_t3:'Something.',
+    contact_note:'DM for projects, collaborations and custom systems.',
+    footer_sub:'Creative Systems & Digital Solutions', footer_tag:'Building modern digital experiences. BR/Global'
+  },
+  es: {
+    nav_about:'Sobre mí', nav_services:'Servicios', nav_work:'Trabajos Seleccionados',
+    nav_why:'¿Por qué trabajar conmigo?', nav_process:'Proceso', nav_contact:'Contacto',
+    nav_status:'Disponible', nav_cta:'Hablar ahora →',
+    hero_line1:'Sistemas', hero_line2:'Creativos', hero_line3:'&amp; Soluciones', hero_line4:'Digitales',
+    hero_tagline:'Tú te enfocas en tu negocio. Yo me encargo del resto: automatización, diseño y sistemas que trabajan por ti 24h.',
+    hero_cta:'Comenzar un proyecto',
+    tag1:'→ Automatizaciones Inteligentes', tag2:'→ Landing Pages',
+    tag3:'→ Desarrollo Creativo', tag4:'→ Sistemas Digitales',
+    marq1:'Sistemas de Contenido', marq2:'Flujos Digitales', marq3:'Agentes Inteligentes', marq4:'Identidad Visual',
+    about_title1:'Más que un', about_title2:'Desarrollador.', about_title3:'Un Creador.',
+    about_p1:'Ayudo a <strong>negocios y creadores</strong> a modernizar sus procesos con automatizaciones inteligentes, sistemas digitales y dirección visual premium.',
+    about_p2:'La mayoría de los técnicos no saben comunicar. La mayoría de los diseñadores no saben construir. Yo estoy en la intersección.',
+    pill2:'Sistemas Digitales', pill4:'Dirección Creativa',
+    services_title:'Lo que<br>construyo.', services_note:'Sistemas pensados para funcionar, no solo parecer bonitos.',
+    s1_num:'AUTOMATIZACIÓN', s1_name:'Automatización', s1_desc:'Los procesos manuales se convierten en flujos automáticos. Tú defines la regla, la máquina ejecuta.',
+    s1_i1:'Agente de WhatsApp', s1_i2:'Captación de Leads', s1_i3:'CRM automatizado', s1_i4:'Email marketing', s1_i5:'Agendamiento', s1_i6:'Notificaciones',
+    s2_num:'LANDING PAGE', s2_name:'Landing Page', s2_desc:'Páginas que venden mientras duermes. Diseño premium, performance técnica y copy estratégico.',
+    s2_i1:'Diseño moderno', s2_i2:'SEO técnico', s2_i3:'Performance 100/100', s2_i4:'Mobile-first', s2_i5:'A/B testing', s2_i6:'Analytics',
+    s3_num:'AGENTES DE IA', s3_name:'Agentes de IA', s3_desc:'Sistemas que toman decisiones, responden a clientes y ejecutan tareas sin intervención humana.',
+    s3_i1:'SDR automatizado', s3_i2:'Atención 24h', s3_i3:'Calificación de leads', s3_i4:'Análisis de datos', s3_i5:'Triaje inteligente',
+    s4_num:'DEV CREATIVO', s4_name:'Dev Creativo', s4_desc:'Sensibilidad de diseño encuentra ejecución técnica. Interfaces premium con intención.',
+    s4_i1:'Interfaces minimalistas', s4_i2:'Sistemas visuales', s4_i3:'Creative tech', s4_i4:'Experiencias digitales', s4_i5:'Presencia online', s4_i6:'Identidad de marca',
+    w1_type:'Automatización / WhatsApp', w1_title:'Atención Automática', w1_desc:'Captación y calificación de leads por WhatsApp con agendamiento integrado. 24h sin intervención manual.',
+    w2_type:'Landing Page / Conversión', w2_title:'Página de Alta Conversión', w2_desc:'Diseño moderno, carga ultra-rápida y estructura pensada para convertir desde el primer scroll.',
+    w3_type:'Dashboard / Analytics', w3_title:'Dashboard de Agentes', w3_desc:'Panel de control para monitoreo de automatizaciones, volumen de conversaciones y tasa de resolución en tiempo real.',
+    w4_type:'Workflow / Automatización', w4_title:'Flujo de Captación', w4_desc:'Automatización completa del funnel: trigger, calificación por IA, acción multicanal y actualización de CRM.',
+    why_t1:'Tech', why_t2:'Encuentra', why_t3:'Estética.',
+    diff_label:'◈ Diferencial principal',
+    diff0_h:'Dirección Creativa', diff0_p:'Tengo ojo de diseñador en todo lo que construyo. Nada se entrega sin parecer intencional.',
+    diff1_h:'Estética Moderna', diff1_p:'Tu marca no va a parecer un template genérico. Identidad visual distintiva desde el primer día.',
+    diff2_h:'Tecnología Invisible', diff2_p:'La tecnología trabaja por debajo. Lo que el cliente ve es resultado. No herramienta, resultado.',
+    diff3_h:'Mentalidad de Constructor', diff3_p:'Proceso objetivo, ejecución eficiente. Foco en entregar valor real.',
+    diff4_h:'Comunicación que Convierte', diff4_p:'Hablo tech y negocio. Sin jerga innecesaria, solo resultados que tienen sentido para ti.',
+    step1_t:'Descubrimiento', step1_d:'Entiendo tu negocio, objetivos y cuellos de botella actuales. Defino qué significa el éxito para ti.',
+    step2_t:'Diseño', step2_d:'Mapeo el sistema o interfaz. Decisiones estéticas y funcionales antes de cualquier línea de código.',
+    step3_t:'Construcción', step3_d:'Ejecuto con velocidad. Itero rápido. Entrego una versión funcional antes de buscar la perfección.',
+    step4_t:'Lanzamiento', step4_d:'Deploy, prueba, refinamiento. Entrego con documentación completa para que mantengas el control.',
+    faq1_q:'¿Cuánto tiempo tarda un proyecto?', faq1_a:'Depende del alcance. Una landing page simple sale en 3–5 días. Una automatización completa con CRM puede llevar 1–2 semanas. Siempre alineo los plazos antes de empezar.',
+    faq2_q:'¿Trabajas de forma remota?', faq2_a:'Sí, 100% remoto. Atiendo clientes en cualquier ciudad de Brasil y en el extranjero. Toda la comunicación es por WhatsApp o videollamada.',
+    faq3_q:'¿Necesito saber de tecnología para contratarte?', faq3_a:'No. Mi trabajo es traducir lo que tu negocio necesita en sistemas que funcionen. Tú te enfocas en el resultado, yo me encargo de la ejecución.',
+    faq4_q:'¿Cuánto cuesta un proyecto?', faq4_a:'Depende del alcance y complejidad. Landing pages desde R$800. Automatizaciones desde R$1.200. Proyectos mayores tienen presupuesto personalizado, siempre con alcance cerrado antes de empezar.',
+    faq5_q:'¿Cómo funciona el pago?', faq5_a:'50% al aprobar el alcance, 50% en la entrega. Acepto Pix, transferencia y tarjeta. Para proyectos mayores, puedo fraccionar hasta 3x.',
+    faq6_q:'¿Ofreces soporte después de la entrega?', faq6_a:'Todo proyecto incluye 15 días de soporte gratuito tras la entrega. Para soporte continuo, tenemos planes mensuales disponibles.',
+    contact_t1:'Vamos a', contact_t2:'Construir', contact_t3:'Algo.',
+    contact_note:'DM para proyectos, colaboraciones y sistemas personalizados.',
+    footer_sub:'Sistemas Creativos & Soluciones Digitales', footer_tag:'Construyendo experiencias digitales modernas. BR/Global'
+  }
+};
 
+let currentLang = 'pt';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+  });
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es' : 'en';
+}
+
+/* ── Hamburger menu ──────────────────────────── */
+const hamburger  = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
 function closeMenu() {
   hamburger.classList.remove('open');
   mobileMenu.classList.remove('open');
   document.body.style.overflow = '';
 }
-
 hamburger.addEventListener('click', () => {
   const isOpen = mobileMenu.classList.toggle('open');
   hamburger.classList.toggle('open', isOpen);
@@ -1301,100 +1219,45 @@ hamburger.addEventListener('click', () => {
 
 /* ── Parallax hero ghost ─────────────────────── */
 const ghost = document.querySelector('.hero-ghost');
-if (ghost) {
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY * 0.18;
-    ghost.style.transform = `translateY(${y}px)`;
-  }, { passive: true });
-}
+if (ghost) window.addEventListener('scroll', () => { ghost.style.transform = `translateY(${window.scrollY * 0.18}px)`; }, { passive: true });
 
 /* ── Scroll progress ─────────────────────────── */
 const bar = document.getElementById('progress-bar');
-window.addEventListener('scroll', () => {
-  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-  bar.style.width = pct + '%';
-}, { passive: true });
+window.addEventListener('scroll', () => { bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%'; }, { passive: true });
 
 /* ── Magnetic cursor ─────────────────────────── */
-const dot  = document.getElementById('cursor-dot');
-const ring = document.getElementById('cursor-ring');
-let mx=0, my=0, rx=0, ry=0;
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  dot.style.left = mx + 'px';
-  dot.style.top  = my + 'px';
-});
-(function animRing() {
-  rx += (mx - rx) * 0.22;
-  ry += (my - ry) * 0.22;
-  ring.style.left = rx + 'px';
-  ring.style.top  = ry + 'px';
-  requestAnimationFrame(animRing);
-})();
-
-/* Magnetic pull on interactive elements */
+const dot = document.getElementById('cursor-dot'), ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+(function animRing(){ rx+=(mx-rx)*0.22; ry+=(my-ry)*0.22; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); })();
 document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mousemove', e => {
-    const r   = el.getBoundingClientRect();
-    const cx  = r.left + r.width  / 2;
-    const cy  = r.top  + r.height / 2;
-    const dx  = (e.clientX - cx) * 0.22;
-    const dy  = (e.clientY - cy) * 0.22;
-    el.style.transform = `translate(${dx}px, ${dy}px)`;
-  });
-  el.addEventListener('mouseleave', () => {
-    el.style.transform = '';
-  });
+  el.addEventListener('mousemove', e => { const r=el.getBoundingClientRect(); el.style.transform=`translate(${(e.clientX-r.left-r.width/2)*0.22}px,${(e.clientY-r.top-r.height/2)*0.22}px)`; });
+  el.addEventListener('mouseleave', () => { el.style.transform=''; });
 });
 
-/* ── Mobile: força reveal visível ────────────── */
-if (window.innerWidth <= 900) {
-  document.querySelectorAll('.reveal').forEach(el => {
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-    el.style.filter = 'none';
-  });
-}
+/* ── Mobile force reveal ─────────────────────── */
+if (window.innerWidth <= 900) document.querySelectorAll('.reveal').forEach(el => { el.style.opacity='1'; el.style.transform='none'; el.style.filter='none'; });
 
-/* ── Blur-in reveal (desktop only) ──────────── */
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 90);
-    }
-  });
-}, { threshold: 0.08 });
-reveals.forEach(el => observer.observe(el));
+/* ── Scroll reveal ───────────────────────────── */
+const observer = new IntersectionObserver(entries => { entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*90); }); }, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 /* ── Hero tag cycle ──────────────────────────── */
 const tags = document.querySelectorAll('.hero-tags .tag');
 let activeTag = 0;
-setInterval(() => {
-  tags.forEach(t => t.classList.remove('active'));
-  activeTag = (activeTag + 1) % tags.length;
-  tags[activeTag].classList.add('active');
-}, 1900);
+setInterval(() => { tags.forEach(t=>t.classList.remove('active')); activeTag=(activeTag+1)%tags.length; tags[activeTag].classList.add('active'); }, 1900);
 
-/* ── 3D Tilt on cards ────────────────────────── */
+/* ── 3D Tilt ─────────────────────────────────── */
 document.querySelectorAll('.tilt-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const r  = card.getBoundingClientRect();
-    const x  = (e.clientX - r.left) / r.width  - 0.5;
-    const y  = (e.clientY - r.top)  / r.height - 0.5;
-    card.style.transform = `perspective(800px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg) translateY(-4px)`;
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-  });
+  card.addEventListener('mousemove', e => { const r=card.getBoundingClientRect(); const x=(e.clientX-r.left)/r.width-0.5; const y=(e.clientY-r.top)/r.height-0.5; card.style.transform=`perspective(800px) rotateY(${x*5}deg) rotateX(${-y*5}deg) translateY(-4px)`; });
+  card.addEventListener('mouseleave', () => { card.style.transform=''; });
 });
 
 /* ── FAQ ─────────────────────────────────────── */
 function toggleFaq(btn) {
-  const item   = btn.closest('.faq-item');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
+  const item=btn.closest('.faq-item'), isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
 }
 </script>
 </body>
